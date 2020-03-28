@@ -12,7 +12,7 @@ const CardList = ( {groups , members} ) =>
     
     // console.log({getMembers})
 		return (
-			<Card 
+			<Card className="dib"
 				key={groups[i].grpid} 
 				name={groups[i].gname}
 				member={getMembers}
