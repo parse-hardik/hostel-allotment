@@ -29,7 +29,8 @@ class Home extends Component{
             this.setState({role:'member'})
           else
             this.setState({role:'none'})
-        console.log('checkRole is',this.state.role)  
+        // console.log('checkRole is',this.state.role)  
+        // this.props.setRole(this.state.role)
       })
       .catch(err=>console.log);
 	}

@@ -27,6 +27,7 @@ class Group extends Component{
 	 	axios.get('http://localhost:5000/getUsers')
 	 	.then(response => {
 	 		this.setState({users : response.data});
+	 		console.log(response.data)
 	 	})
 	 	.catch(function(err) {
 	 		console.log(err);
