@@ -17,7 +17,8 @@ class Home extends Component{
       method:'post',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({
-        username: this.props.username
+        username: this.props.username,
+        email: this.props.email
       })
     }).then((res)=>res.json())
       .then(res=>{
@@ -42,7 +43,7 @@ class Home extends Component{
 						if(this.state.role==='none')
 							return <Roles username={this.props.username} role={this.state.role}/>
 						else
-							return <Profile username={this.props.username} role={this.state.role}/>
+							return <Profile username={this.props.username} email={this.props.email} role={this.state.role}/>
 					})()
 				}
 			</div>
