@@ -55,7 +55,7 @@ class Register extends Component{
 		this.setState({reenter:event.target.value});
 	}
 	joinUser=(event)=>{
-		if(this.state.password===this.state.reenter)
+		if(this.state.password===this.state.reenter && this.state.email.match(/.+@.+/))
 		{
 			fetch('http://localhost:5000/register',{
       method:'post',
@@ -86,8 +86,13 @@ class Register extends Component{
       			console.log(err);	
       	});
 		}
-		else
-			alert("Passwords don't match!");
+		else{
+			if(this.state.password===this.state.reenter){
+				alert('invalid email address');
+			}
+			else
+				alert("Passwords don't match!");
+		}
 	}
 	render(){
 		return(
