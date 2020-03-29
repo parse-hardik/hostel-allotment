@@ -15,45 +15,6 @@ class Group extends Component{
 		}
 	}
 
-	 sendReq=(event,to)=>{
-	 	// console.log('username is',username);
- 		/*if(this.state.superUser.leader===true)
- 			{
- 				fetch('http://localhost:5000/createNotif',{
-		      method:'post',
-		      headers: {'Content-Type':'application/json'},
-		      body: JSON.stringify({
-		        toUsername:to,
-		        fromGname:this.state.superUser.username
-		      })
-		    }).then(res=>res.json())
-		      .then((res)=>{
-		      	alert('Your req has been sent to ' + to + '!')
-		      })
-		      .catch(err=>console.log);
- 			}
- 			else
- 				if(this.state.superUser.member===true)
- 				{
- 					fetch('http://localhost:5000/createNotif',{
-			      method:'post',
-			      headers: {'Content-Type':'application/json'},
-			      body: JSON.stringify({
-			        fromUsername:this.state.superUser.username,
-			        toGname:to
-			      })
-			    }).then(res=>res.json())
-			      .then((res)=>{
-			      	alert('Your req has been sent to ' + to + '!')
-			      })
-			      .catch(err=>console.log);
- 				}
- 				else
- 					alert('Please choose a Role First,Navigate to Home tab')*/
- 				console.log(this.state.superUser);
- 		}
- 	
-
 	 componentDidMount(){
 		
 	 	axios.get('http://localhost:5000/getUsers')
@@ -73,7 +34,7 @@ class Group extends Component{
     }).then((res)=>res.json())
       .then(res=>{
         this.setState({superUser:res})
-        console.log(this.state.superUser)
+        // console.log(this.state.superUser)
       })
       .catch(err=>console.log);
 	 }

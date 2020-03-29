@@ -5,7 +5,7 @@ const LeaderCard =({ fromusername,togname }) => {
 
 var str = new String(fromusername.toString());
 // fromgname=fromgname.toString();
-console.log(str);
+// console.log(str);
 
 	return(
 <div class="card weather-card cardbg">

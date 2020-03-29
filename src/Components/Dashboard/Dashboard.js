@@ -15,7 +15,7 @@ class Dashboard extends React.Component{
 	componentDidMount()
 	{
 		name=this.props.username;
-		console.log('Dashboard mein, username is',name);
+		// console.log('Dashboard mein, username is',name);
 	}
 	render()
 	{

@@ -12,7 +12,7 @@ class Home extends Component{
     }
   }
 	async componentDidMount(){
-		console.log('username in home is',this.props.username);
+		// console.log('username in home is',this.props.username);
 		await fetch('http://localhost:5000/getRole',{
       method:'post',
       headers: {'Content-Type':'application/json'},
@@ -40,7 +40,7 @@ class Home extends Component{
 			<div>
 				{
 					(()=>{
-						console.log('checkRole in new function is',this.state.role);
+						// console.log('checkRole in new function is',this.state.role);
 						if(this.state.role==='none')
 							return <Roles username={this.props.username} role={this.state.role}/>
 						else

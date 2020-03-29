@@ -29,7 +29,7 @@ class Notifications extends Component{
             this.setState({role:'member'});
           else
             this.setState({role:'none'});
-        console.log(res);
+        // console.log(res);
       })
       .catch(err=>console.log);
 
@@ -60,7 +60,7 @@ class Notifications extends Component{
   }).then((res)=>res.json())
     .then(res=>{
       this.setState({grps:res});
-      console.log(res);
+      // console.log(res);
     })
     .catch(err=>console.log);
   }
