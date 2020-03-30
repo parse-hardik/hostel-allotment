@@ -13,7 +13,7 @@ class Layout extends Component{
 				</div>
 				<br></br>
 				<div>
-					<Slide />
+					<Slide username= {this.props.username}/>
 				</div>
 			</div>
 			
