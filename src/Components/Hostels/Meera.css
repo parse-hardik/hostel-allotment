@@ -2,3 +2,6 @@
 	display: flex;
 	justify-content: space-around;
 }
+.blocked{
+	background-color: red;
+}

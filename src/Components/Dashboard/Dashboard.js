@@ -59,7 +59,7 @@ class Dashboard extends React.Component{
 			    </div>
 			  </div>
 			  	<Switch>
-				  	<Route path="/layout" exact component={Layout}/>
+				  	<Route path="/layout" render={(props)=> <Layout {...props} username={this.props.username} />}/>
 				  	<Route path="/notifications" exact render={(props) => <Notifications {...props} username={this.props.username} />} />
 				  	<Route path="/dashboard" render={(props) => <Home {...props} username={this.props.username} />} />
 				  	<Route path="/groups" component={Groups}/>
