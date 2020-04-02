@@ -120,12 +120,22 @@ class Meera extends Component{
 	 	});
 	 }
 
+
+	 reload = () => {
+    //RELOAD COMPONENT
+    this.componentDidMount();
+		};
+
 	selectWing=(floor,wing,status)=>{
 		console.log(this.state.wings)
 		if(this.props.username==='admin')
 		{
 			if(status==="free")
 			{
+				console.log(this.props.Bhawan);
+				console.log(this.state.f1w1);
+				console.log(wing);
+				console.log(floor);
 				this.dialog.show({
 				body:'Are you sure you want to block the wing?',
 				actions:[
@@ -134,6 +144,7 @@ class Meera extends Component{
   						axios.post('http://localhost:5000/setBlocked',{ bhawan:this.props.Bhawan,floor:floor,wingNo:wing})
   						.then(res =>{
   							console.log(res.data);
+  							this.reload();
   						})
   					})
 				]
@@ -148,35 +159,46 @@ class Meera extends Component{
   						axios.post('http://localhost:5000/setFree',{ bhawan:this.props.Bhawan,floor:floor,wingNo:wing})
   						.then(res =>{
   							console.log(res.data);
+  							this.reload();
   						})
   					})
 				  ]
 				})
 			}	
 	  	}
-		else
+		else 
 		{
+			axios.post('http://localhost:5000/setSelected',{ bhawan:this.props.Bhawan,floor:floor,wingNo:wing})
+	  			.then(res =>{
+	  					console.log(res.data);
+	  					//this.reload();
+	  				})
 			if(status==="free")
 			{
 				this.dialog.show({
 					body:'Are you sure you want to select the wing?',
 					actions:[
-					   Dialog.CancelAction(),
-					   Dialog.OKAction(() => {
-	  						axios.post('http://localhost:5000/setSelected',{ bhawan:this.props.Bhawan,floor:floor,wingNo:wing})
-	  						.then(res =>{
-	  							console.log(res.data);
-	  						})
-						})
+					   Dialog.CancelAction(() => {
+  						axios.post('http://localhost:5000/setFree',{ bhawan:this.props.Bhawan,floor:floor,wingNo:wing})
+  						.then(res =>{
+  							console.log(res.data);
+  							this.reload();
+  							})
+  						}),
+					   Dialog.OKAction(()=>{
+					   	alert('Wing Selected Successfully');
+					   	this.reload();
+					   })
 					]
 				})
+				
 			}
 			else
 			{
 				this.dialog.show({
 					body:'This wing cannot be selected.Select another Wing.',
 					actions:[
-						Dialog.OKAction()
+						Dialog.OKAction(()=>{this.reload();})
 					]
 				})
 			}
