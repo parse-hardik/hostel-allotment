@@ -17,9 +17,13 @@ class Group extends Component{
 
 	 componentDidMount(){
 		
-	 	axios.get('http://localhost:5000/getUsers')
-	 	.then(response => {
-	 		this.setState({users : response.data});
+	 	fetch('http://localhost:5000/getUsers',{
+	 		method:'get',
+      headers: {'Content-Type':'application/json'}
+	 	})
+	 	.then((res)=>res.json())
+	 	.then(res => {
+	 		this.setState({users : res});
 	 	})
 	 	.catch(function(err) {
 	 		console.log(err);
@@ -45,6 +49,7 @@ class Group extends Component{
 
 	render(){
 			const {users,searchField}= this.state;
+
 			const filteredUsers = users.filter(users =>{
 			return users.name.toLowerCase().includes(searchField.toLowerCase());
 			});

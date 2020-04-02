@@ -116,15 +116,15 @@ class Slide extends Component{
 			    </a>
 			  </div>
 			  	<Switch>
-						<Route path="/meera" exact component={Meera}/>
-						<Route path="/Vyas" exact component={Meera}/>
-						<Route path="/Gautam" exact component={Meera}/>
-						<Route path="/Gandhi" exact component={Meera}/>
-						<Route path="/Shankar" exact component={Meera}/>
-						<Route path="/Krishna" exact component={Meera}/>
-						<Route path="/Valmiki" exact component={Meera}/>
-						<Route path="/Malviya" exact component={Meera}/>
-						<Route path="/VK" exact component={Meera}/>
+						<Route path="/meera" render={(props)=><Meera Bhawan="meera" username= {this.props.username}/>}/>
+						<Route path="/Vyas" render={(props)=><Meera Bhawan="vyas" username= {this.props.username}/>}/>
+						<Route path="/Gautam" render={(props)=><Meera Bhawan ="gautam" username= {this.props.username}/>}/>
+						<Route path="/Gandhi" render={(props)=><Meera Bhawan="gandhi" username= {this.props.username}/>}/>
+						<Route path="/Shankar" render={(props)=><Meera Bhawan="shankar" username= {this.props.username} />}/>
+						<Route path="/Krishna" render={(props)=><Meera Bhawan="krishna" username= {this.props.username}/>}/>
+						<Route path="/Valmiki" render={(props)=><Meera Bhawan="valmiki" username= {this.props.username}/>}/>
+						<Route path="/Malviya" render={(props)=><Meera Bhawan="malviya" username= {this.props.username}/>}/>
+						<Route path="/VK" render={(props)=><Meera Bhawan="vk"  username= {this.props.username}/>}/>}/>
 
 
 				</Switch>

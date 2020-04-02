@@ -12,6 +12,7 @@ const Card =(props) => {
 			<h2>{props.name}</h2>
 			</div>		
 		 	{
+		 		props.superUser[0]!==undefined ?
 		 		props.superUser[0].leader ?
 		 			props.user.member ?
 				 		<div className='btn'>
@@ -61,6 +62,7 @@ const Card =(props) => {
 			    	</div>	
 		    	: console.log('hi')
 		    : console.log('hi')	
+		  	: console.log('hi')  
 	    }
 		</div>	
 	);
