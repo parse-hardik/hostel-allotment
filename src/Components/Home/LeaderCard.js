@@ -9,28 +9,27 @@ class LeaderCard extends React.Component{
       fromusername:'',
       togname:'',
       status:'',
+      colour:'',
     }
   }
-  componentDidMount()
-  {
-    this.state.fromusername=this.props.fromusername;
-    this.state.togname=this.props.togname;
-  }
+  
   changetoAccept=(event)=>{
-    this.state.status='accept';
+    this.setState({status:"accept"})
 
     fetch('http://localhost:5000/notifsReq',{
       method:'post',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({
         fromUsername: this.state.fromusername,
-        toGname: this.state.toGname,
+        toGname: this.state.togname,
         accept: true,
       })
     })
     .then((res)=>res.json())
       .then((res)=>{
         if(res.name!==undefined){
+          alert('Req Accepted!!')
+          this.setState({colour:"#00ff00"})
         }
         else
           alert('Incorrect combination');
@@ -39,30 +38,43 @@ class LeaderCard extends React.Component{
 
   }
   changetoReject=(event)=>{
-     this.state.status='reject';
-
+     // this.state.status='reject';
+     this.setState({status:"reject"})
     fetch('http://localhost:5000/notifsReq',{
       method:'post',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({
         fromUsername: this.state.fromusername,
-        toGname: this.state.toGname,
+        toGname: this.state.togname,
         accept: false,
       })
     })
     .then((res)=>res.json())
       .then((res)=>{
-        if(res.name!==undefined){
+        if(res.colour!==undefined){
+          alert('req rejected')
+          this.setState({colour:res.colour})
         }
         else
-          alert('Incorrect combination');
+          alert('ffv');
       }).catch((err)=>console.log(err));
     
   }
+
+componentDidMount()
+  {
+    // this.state.fromusername=this.props.fromusername;
+    this.setState({fromusername:this.props.fromusername})
+    this.setState({togname:this.props.togname})
+    this.setState({colour:this.props.colour})
+    // this.state.togname=this.props.togname;
+  }
+
   render(){
+    const clr = this.state.colour
     return(
     <div className="dib ">
-       <div className="dib br3 pa3 ma1 bw2 w-45 card shadow-3 bg2">
+       <div style={{backgroundColor:clr}} className="dib br3 pa3 ma1 bw2 w-45 card shadow-3 bg2" >
           <div className=" card-front dib">        
            
               <h3 className="f3"> {this.state.fromusername} wants to join your group.</h3>
