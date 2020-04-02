@@ -215,7 +215,7 @@ class Meera extends Component{
 				<div>
 					<h1>Layout Floor 1</h1>
 					<a className="button btn disabled m-0 washroom" href="#"></a>
-					<button name="meera floor1 wing 1"  className="btn space m-0 wingleft grow"  onClick= {()=>this.selectWing('1','1',this.state.f1w1)}>1</button>
+					<button name="meera floor1 wing 1"  className={"btn space m-0 wingleft "+(this.state.f1w1 !='free'?'disabled bg':'grow')}   onClick= {()=>this.selectWing('1','1',this.state.f1w1)}>1</button>
 					<button name="meera floor1 wing 2"  className="btn space m-0 wingright grow" onClick= {()=>this.selectWing('1','2',this.state.f1w2)}>2</button>
 					<a className="button btn disabled m-0 washroom" href="#"></a>
 					<br></br>

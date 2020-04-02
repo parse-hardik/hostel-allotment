@@ -71,7 +71,10 @@ class Notifications extends Component{
 		const {grps}= this.state;
 		const filteredGroups = grps;
 		return(
-			<div>
+			<div class='tc'>
+      <br></br>
+      <h2 className="tc f2">Your Notifications</h2>
+
 				{
 					(()=>{
 						

@@ -8,19 +8,17 @@ var str = new String(fromgname.toString());
 console.log(str);
 
 	return(
-<div class="card weather-card cardbg">
-  <div class="card-body pb-3">
-    <h6 class="card-title font-weight-bold f1">Notification from {str}</h6>
-    <div class="collapse-content">
-      <div class="collapse" id={str}>
-      	<h4>hi</h4>
-      </div>
-      <hr class="" />
-       <a class="btn btn-flat red-text p-1 my-1 mr-0 mml-1 deep-purple-text collapsed f1 tc" data-toggle="collapse" href={"#"+str} aria-expanded="false" aria-controls={str}>Click to view</a>
+    <div className="dib ">
+       <div className="dib br3 pa3 ma1 bw2 w-45 card shadow-3 bg2">
+          <div className=" card-front dib">        
+           
+              <h3 className="f3"> {str} wants to you to join their group.</h3>
+              <button type="button" class="btn btn-success grow">Accept</button>
+              <button type="button" class="btn btn-danger grow">Reject</button>  
+          </div>           
+      </div>     
     </div>
-  	</div>
-</div>
-	);
+    );
 }
 
 // NotifCard.prototype.toString = function() { 
