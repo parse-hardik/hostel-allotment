@@ -1,11 +1,11 @@
 import React from 'react';
-import Card from './Card';
+import UserCard from './UserCard';
 
-const CardList = ( {users,sendReq,superUser,role} ) =>
+const UserCardList = ( {users,sendReq,superUser,role} ) =>
 {
 	const cardArray = users.map((user,i) => {
 		return (
-			<Card className="dib"
+			<UserCard className="dib"
 				key={users[i]._id} 
 				name={users[i].name}
 				username={users[i].username}
@@ -15,10 +15,12 @@ const CardList = ( {users,sendReq,superUser,role} ) =>
 				/>);
 	});
 	return(
-		<div>
+
+		<div className='d-flex flex-wrap ma2'>
+		{console.log(superUser)}
 			{cardArray}
 		</div>
 	);
 }
 
-export default CardList;
+export default UserCardList;

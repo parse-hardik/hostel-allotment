@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CardList from '../CardList/CardList';
+import CardList from './CardList';
 import { groups } from '../Data/GroupList';
 import SearchBox from '../SearchBox';
 import axios from 'axios';
