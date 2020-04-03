@@ -1,35 +1,94 @@
 import React from 'react';
-import './notifcard.css';
+import './LeaderCard.css';
 
-const LeaderCard =({ fromusername,togname }) => {
+class LeaderCard extends React.Component{
 
-var str = new String(fromusername.toString());
-// fromgname=fromgname.toString();
-// console.log(str);
+  constructor(){
+    super();
+    this.state={
+      fromusername:'',
+      togname:'',
+      status:'',
+      colour:'',
+    }
+  }
+  
+  changetoAccept=(event)=>{
+    this.setState({status:"accept"})
 
-	return(
-<div class="card weather-card cardbg">
-  <div class="card-body pb-3">
-    <h4 class="card-title font-weight-bold f1">Notification from {str}</h4>
-    <p class="card-text">Mon, 12:30 PM, Mostly Sunny</p>
-    <div class="d-flex justify-content-between">
-      <p class="display-1 degree">23</p>
-      <i class="fas fa-sun-o fa-5x pt-3 amber-text"></i>
+    fetch('http://localhost:5000/notifsReq',{
+      method:'post',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        fromUsername: this.state.fromusername,
+        toGname: this.state.togname,
+        accept: true,
+      })
+    })
+    .then((res)=>res.json())
+      .then((res)=>{
+        if(res.name!==undefined){
+          alert('Req Accepted!!')
+          this.setState({colour:"#00ff00"})
+        }
+        else
+          alert('Incorrect combination');
+        // console.log(res);
+      }).catch((err)=>console.log(err));
+
+  }
+  changetoReject=(event)=>{
+     // this.state.status='reject';
+     this.setState({status:"reject"})
+    fetch('http://localhost:5000/notifsReq',{
+      method:'post',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        fromUsername: this.state.fromusername,
+        toGname: this.state.togname,
+        accept: false,
+      })
+    })
+    .then((res)=>res.json())
+      .then((res)=>{
+        if(res.colour!==undefined){
+          alert('req rejected')
+          this.setState({colour:res.colour})
+        }
+        else
+          alert('ffv');
+      }).catch((err)=>console.log(err));
+    
+  }
+
+componentDidMount()
+  {
+    // this.state.fromusername=this.props.fromusername;
+    this.setState({fromusername:this.props.fromusername})
+    this.setState({togname:this.props.togname})
+    this.setState({colour:this.props.colour})
+    // this.state.togname=this.props.togname;
+  }
+
+  render(){
+    const clr = this.state.colour
+    return(
+    <div className="dib ">
+       <div style={{backgroundColor:clr}} className="dib br3 pa3 ma1 bw2 w-45 card shadow-3 bg2" >
+          <div className=" card-front dib">        
+           
+              <h3 className="f3"> {this.state.fromusername} wants to join your group.</h3>
+              <button onClick={this.changetoAccept} type="button" className="btn btn-success grow">Accept</button>
+              <button onClick={this.changetoReject} type="button" className="btn btn-danger grow">Reject</button>  
+          </div>           
+      </div> 
+    
     </div>
-    <div class="d-flex justify-content-between mb-4">
-      <p><i class="fas fa-tint fa-lg text-info pr-2"></i>3% Precipitation</p>
-      <p><i class="fas fa-leaf fa-lg grey-text pr-2"></i>21 km/h Winds</p>
-    </div>
-    <div class="collapse-content">
-      <div class="collapse" id={str}>
-      	<h1>hi</h1>
-      </div>
-      <hr class="" />
-       <a class="btn btn-flat red-text p-1 my-1 mr-0 mml-1 deep-purple-text collapsed f1 tc" data-toggle="collapse" href={"#"+str} aria-expanded="false" aria-controls={str}>Expand</a>
-    </div>
-  	</div>
-</div>
-	);
+  );
+
+ } 
+  
 }
+
 
 export default LeaderCard;
