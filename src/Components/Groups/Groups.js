@@ -11,7 +11,8 @@ class Group extends Component{
 		this.state ={
 			grps:[],
 			searchField:'',
-			users:[]
+			users:[],
+			username:{}
 		}
 	}
 
@@ -19,7 +20,7 @@ class Group extends Component{
 		axios.get('http://localhost:5000/getGroup')
 	 	.then(response => {
 	 		this.setState({grps : response.data});
-	 		console.log(response.data);
+	 		//console.log(response.data);
 	 	})
 	 	.catch(function(err) {
 	 		console.log(err);
@@ -27,11 +28,16 @@ class Group extends Component{
 	 	axios.get('http://localhost:5000/getUsers')
 	 	.then(response => {
 	 		this.setState({users : response.data});
-	 		console.log(response.data)
+	 		//console.log(response.data)
 	 	})
 	 	.catch(function(err) {
 	 		console.log(err);
 	 	});
+	 	axios.post('http://localhost:5000/getOneUser',{username: this.props.username})
+	 	.then(res=>{
+        this.setState({username:res.data[0]})
+         console.log(this.state.username)
+        });
 
 	 }
 
@@ -50,6 +56,8 @@ class Group extends Component{
 				<span class="glyphicon glyphicon-name"></span><SearchBox searchChange={ this.onSearchChange }/>
 				<CardList groups = { filteredGroups } 
 						  members ={this.state.users}
+						  usergrp= {this.state.username.gname}
+						  username={this.props.username}
 						 />
 				</div>
 		);
