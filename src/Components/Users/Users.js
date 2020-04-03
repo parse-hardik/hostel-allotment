@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CardList from './CardList';
+import UserCardList from './UserCardList';
 // import { groups } from '../Data/GroupList';
 import SearchBox from '../SearchBox';
 import axios from 'axios';
@@ -57,7 +57,7 @@ class Group extends Component{
 				<div className='tc'>
 					<h1 className={`f1 tc`}>Users</h1>
 					<span class="glyphicon glyphicon-name"></span><SearchBox searchChange={ this.onSearchChange }/>
-					<CardList users = { filteredUsers } sendReq={this.sendReq} superUser={this.state.superUser}/>
+					<UserCardList users = { filteredUsers } sendReq={this.sendReq} superUser={this.state.superUser}/>
 				</div>
 		);
 	}
