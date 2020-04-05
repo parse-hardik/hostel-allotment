@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CardList from './CardList';
+import UserCardList from './UserCardList';
 // import { groups } from '../Data/GroupList';
 import SearchBox from '../SearchBox';
 import axios from 'axios';
@@ -29,16 +29,10 @@ class Group extends Component{
 	 		console.log(err);
 	 	});
 
-	 	fetch('http://localhost:5000/getOneUser',{
-      method:'post',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({
-        username: this.props.username
-      })
-    }).then((res)=>res.json())
-      .then(res=>{
-        this.setState({superUser:res})
-        // console.log(this.state.superUser)
+	 	axios.post('http://localhost:5000/getOneUser',{username: this.props.username})
+        .then(res=>{
+        this.setState({superUser:res.data[0]})
+         console.log(this.state.superUser)
       })
       .catch(err=>console.log);
 	 }
@@ -57,7 +51,7 @@ class Group extends Component{
 				<div className='tc'>
 					<h1 className={`f1 tc`}>Users</h1>
 					<span class="glyphicon glyphicon-name"></span><SearchBox searchChange={ this.onSearchChange }/>
-					<CardList users = { filteredUsers } sendReq={this.sendReq} superUser={this.state.superUser}/>
+					<UserCardList users = { filteredUsers } sendReq={this.sendReq} superUser={this.state.superUser}/>
 				</div>
 		);
 	}
