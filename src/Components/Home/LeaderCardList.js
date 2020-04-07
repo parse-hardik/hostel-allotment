@@ -10,7 +10,6 @@ const LeaderCardList = ( {groups} ) =>
 				fromusername={grp.fromusername} 
 				togname={grp.togname}
 				colour={grp.colour}
-				disabled={grp.disabled}
 				/>
 		);
 	});
