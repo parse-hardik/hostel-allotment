@@ -116,15 +116,15 @@ class Slide extends Component{
 			    </a>
 			  </div>
 			  	<Switch>
-						<Route path="/meera" render={(props)=><Meera Bhawan="meera" username= {this.props.username}/>}/>
-						<Route path="/Vyas" render={(props)=><Meera Bhawan="vyas" username= {this.props.username}/>}/>
-						<Route path="/Gautam" render={(props)=><Meera Bhawan ="gautam" username= {this.props.username}/>}/>
-						<Route path="/Gandhi" render={(props)=><Meera Bhawan="gandhi" username= {this.props.username}/>}/>
-						<Route path="/Shankar" render={(props)=><Meera Bhawan="shankar" username= {this.props.username} />}/>
-						<Route path="/Krishna" render={(props)=><Meera Bhawan="krishna" username= {this.props.username}/>}/>
-						<Route path="/Valmiki" render={(props)=><Meera Bhawan="valmiki" username= {this.props.username}/>}/>
-						<Route path="/Malviya" render={(props)=><Meera Bhawan="malviya" username= {this.props.username}/>}/>
-						<Route path="/VK" render={(props)=><Meera Bhawan="vk"  username= {this.props.username}/>}/>}/>
+						<Route path="/meera" component={(props)=><Meera Bhawan="meera" username= {this.props.username}/>}/>
+						<Route path="/Vyas" component={(props)=><Meera Bhawan="vyas" username= {this.props.username}/>}/>
+						<Route path="/Gautam" component={(props)=><Meera Bhawan ="gautam" username= {this.props.username}/>}/>
+						<Route path="/Gandhi" component={(props)=><Meera Bhawan="gandhi" username= {this.props.username}/>}/>
+						<Route path="/Shankar" component={(props)=><Meera Bhawan="shankar" username= {this.props.username} />}/>
+						<Route path="/Krishna" component={(props)=><Meera Bhawan="krishna" username= {this.props.username}/>}/>
+						<Route path="/Valmiki" component={(props)=><Meera Bhawan="valmiki" username= {this.props.username}/>}/>
+						<Route path="/Malviya" component={(props)=><Meera Bhawan="malviya" username= {this.props.username}/>}/>
+						<Route path="/VK" component={(props)=><Meera Bhawan="vk"  username= {this.props.username}/>}/>}/>
 
 
 				</Switch>
