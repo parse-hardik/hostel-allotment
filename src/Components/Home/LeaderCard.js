@@ -10,14 +10,13 @@ class LeaderCard extends React.Component{
       togname:'',
       status:'',
       colour:'',
-      disabled:'',
 
     }
   }
   
   changetoAccept=(event)=>{
-    if(this.state.disabled==='false'){
-         this.setState({status:"accept",disabled:"true"})
+    if(this.state.status===''){
+         this.setState({status:"accept"})
 
     fetch('http://localhost:5000/notifsReq',{
       method:'post',
@@ -45,10 +44,10 @@ class LeaderCard extends React.Component{
   }
   changetoReject=(event)=>{
      // this.state.status='reject';
-     if(this.state.disabled==='false')
+     if(this.state.status==='')
      {
 
-       this.setState({status:"reject",disabled:"true"})
+       this.setState({status:"reject"})
     fetch('http://localhost:5000/notifsReq',{
       method:'post',
       headers: {'Content-Type':'application/json'},
@@ -78,7 +77,6 @@ componentDidMount()
     this.setState({fromusername:this.props.fromusername})
     this.setState({togname:this.props.togname})
     this.setState({colour:this.props.colour})
-    this.setState({disabled:this.props.disabled})
     // this.state.togname=this.props.togname;
   }
 
@@ -90,8 +88,8 @@ componentDidMount()
           <div className=" card-front dib">        
            
               <h3 className="f3"> {this.state.fromusername} wants to join your group.</h3>
-              <button onClick={this.changetoAccept} type="button" className={"btn "+(this.state.disabled ==='true'?"btn-success disabled bg-grey":"btn-success grow")}>Accept</button>
-              <button onClick={this.changetoReject} type="button"className={"btn "+(this.state.disabled===''?"btn-danger disabled bg-grey":"btn-danger grow")}>Reject</button>  
+              <button onClick={this.changetoAccept} type="button" className={"btn "+(this.state.status !=''?"btn-success disabled bg-grey":"btn-success grow")}>Accept</button>
+              <button onClick={this.changetoReject} type="button"className={"btn "+(this.state.status !=''?"btn-danger disabled bg-grey":"btn-danger grow")}>Reject</button>  
           </div>           
       </div> 
     
