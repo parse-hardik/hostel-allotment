@@ -6,17 +6,15 @@ class LeaderCard extends React.Component{
   constructor(){
     super();
     this.state={
-      fromusername:'',
-      togname:'',
+      fromgname:'',
+      tousername:'',
       status:'',
       colour:'',
-
     }
   }
   
   changetoAccept=(event)=>{
-    if(this.state.status===''){
-         this.setState({status:"accept"})
+    this.setState({status:"accept"})
 
     fetch('http://localhost:5000/notifsReq',{
       method:'post',
@@ -38,16 +36,10 @@ class LeaderCard extends React.Component{
         // console.log(res);
       }).catch((err)=>console.log(err));
 
-
-    }
-   
   }
   changetoReject=(event)=>{
      // this.state.status='reject';
-     if(this.state.status==='')
-     {
-
-       this.setState({status:"reject"})
+     this.setState({status:"reject"})
     fetch('http://localhost:5000/notifsReq',{
       method:'post',
       headers: {'Content-Type':'application/json'},
@@ -66,8 +58,6 @@ class LeaderCard extends React.Component{
         else
           alert('ffv');
       }).catch((err)=>console.log(err));
-     }
-    
     
   }
 
@@ -88,8 +78,8 @@ componentDidMount()
           <div className=" card-front dib">        
            
               <h3 className="f3"> {this.state.fromusername} wants to join your group.</h3>
-              <button onClick={this.changetoAccept} type="button" className={"btn "+(this.state.status !=''?"btn-success disabled bg-grey":"btn-success grow")}>Accept</button>
-              <button onClick={this.changetoReject} type="button"className={"btn "+(this.state.status !=''?"btn-danger disabled bg-grey":"btn-danger grow")}>Reject</button>  
+              <button onClick={this.changetoAccept} type="button" className="btn btn-success grow">Accept</button>
+              <button onClick={this.changetoReject} type="button" className="btn btn-danger grow">Reject</button>  
           </div>           
       </div> 
     
@@ -99,6 +89,5 @@ componentDidMount()
  } 
   
 }
-
 
 export default LeaderCard;
