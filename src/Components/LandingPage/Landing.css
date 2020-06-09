@@ -1,0 +1,140 @@
+.landing-page{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    
+}
+.bg-image{
+    background-image: url('https://thedailybitsian.files.wordpress.com/2014/07/inside-bphc.jpg') ;
+    background-repeat: no-repeat;
+  
+    z-index: 1;
+    background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.heading{
+    padding: 0 100px;
+    font-family: 'Indie Flower', cursive;
+    font-size: 50px;
+    color:white;
+    background-color: rgba(0,0,0, 0.5);
+    height:100px;
+    display: flex;
+      justify-content: center;
+}
+.sub1{
+    justify-self: flex-end;
+    align-self: center;
+}
+.sub{ 
+    color:white;
+    font-size: 30px;margin-left:auto;
+    align-self: center;
+    transition: all ease 0.4s;
+}
+.sub:hover{
+    cursor: pointer;
+    color:grey;
+}
+.sub-heading{
+    font-family: 'Indie Flower', cursive;
+    font-size: 30px;
+    color:white;
+    background-color: rgba(0,0,0, 0.5);
+   margin-top:auto;
+   align-self: center;
+} 
+
+* {
+    box-sizing: border-box;
+  }
+  
+  .slider {
+      align-self: center;
+      margin:auto auto;
+    width: 500px;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  .slides {
+    display: flex;    
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    color:white;
+    /*
+    scroll-snap-points-x: repeat(300px);
+    scroll-snap-type: mandatory;
+    */
+  }
+  .slides::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  .slides::-webkit-scrollbar-thumb {
+    background: black;
+    border-radius: 10px;
+  }
+  .slides::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .slides > div {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    width: 500px;
+    height: 300px;
+    margin-right: 50px;
+    border-radius: 20px;
+    padding:20px;
+    transform-origin: center center;
+    transform: scale(1);
+    transition: transform 0.5s;
+    position: relative;
+    background-color: rgba(0,0,0, 0.8);
+    font-family: 'Indie Flower', cursive;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .slides > div:target {
+  /*   transform: scale(0.8); */
+  }
+
+  
+  .slider > a {
+    display: inline-flex;
+    width: 1.5rem;
+    height: 1.5rem;
+    font-family: 'Indie Flower', cursive;
+    font-size: 20px;
+    background:rgba(0, 0, 0, 0.651);
+    color:white;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 3px 3px;
+    position: relative;
+  }
+  .slider > a:active {
+    top: 1px;
+  }
+  .slider > a:focus {
+    background: #000;
+  }
+  
+  /* Don't need button navigation */
+  @supports (scroll-snap-type) {
+    .slider > a {
+      display: none;
+    }
+  }
+  

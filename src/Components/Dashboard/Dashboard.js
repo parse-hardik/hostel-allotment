@@ -7,7 +7,7 @@ import Layout from '../Layout/Layout';
 import Notifications from '../Notifications/Notifications';
 import Groups from '../Groups/Groups';
 import Users from '../Users/Users';
-
+import App from '../../App';
 var name=" ";
 
 class Dashboard extends React.Component{
@@ -64,6 +64,7 @@ class Dashboard extends React.Component{
 				  	<Route path="/dashboard" render={(props) => <Home {...props} username={this.props.username} />} />
 				  	<Route path="/groups" render={(props) => <Groups {...props} username={this.props.username} />}/>
 				  	<Route path="/users" render={(props) => <Users {...props} username={this.props.username} />} />
+					  <Route path='/app' exact component={App}/>
 			  	</Switch>
 
 			</div>
