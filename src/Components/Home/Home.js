@@ -27,6 +27,8 @@ class Home extends Component{
         else
           if(res.member===true)
             this.setState({role:'member'})
+        else if( window.localStorage.getItem('isAdmin')==="true")
+            this.setState({role:'Admin'})
           else
             this.setState({role:'none'})
         // console.log('checkRole is',this.state.role)  
