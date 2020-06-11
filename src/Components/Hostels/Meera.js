@@ -166,7 +166,7 @@ class Meera extends Component{
 				})
 			}	
 	  	}
-		else 
+		else if(window.localStorage.getItem('role')==='leader')
 		{
 			axios.post('http://localhost:5000/setSelected',{ bhawan:this.props.Bhawan,floor:floor,wingNo:wing})
 	  			.then(res =>{
@@ -203,6 +203,15 @@ class Meera extends Component{
 				})
 			}
 
+		}
+		else{
+			this.dialog.show({
+				body:"You cannot Select a wing.You aren't a leader",
+				actions:[
+				   Dialog.OKAction(()=>{
+				   })
+				]
+			})
 		}
 
 	}
