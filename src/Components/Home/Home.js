@@ -26,6 +26,8 @@ class Home extends Component{
         {
           this.setState({role:'leader'});
           window.localStorage.setItem('role','leader');
+          window.localStorage.setItem('wing',res.wing);
+          console.log(res);
         }
         else
           if(res.member===true)
