@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
+import axios from 'axios';
 
-class Timer extends Component {
+export default class Timer extends Component {
 	constructor() {
+		super();
 		this.state = {
 			hour: '00',
 			sec: '00',
@@ -14,9 +15,10 @@ class Timer extends Component {
 	}
 
 	componentDidMount() {
-		Axios.get('http://localhost:5000/timer/5edf6769c0264e6ed03657e9')
+		axios.get('http://localhost:5000/timer/5edf6769c0264e6ed03657e9')
 			.then(res => {
-				var countdown = res.countdown;
+				console.log(res.data);
+				var countdown = new Date(res.data.countdown);
 				// var date = countdown.getDate();
 				var hour = countdown.getHours();
 				var min = countdown.getMinutes();
@@ -68,16 +70,17 @@ class Timer extends Component {
 	render() {
 		return (
 			<div>
-				<h2>min:{this.state.min} </h2> <h3>sec: {this.state.sec}</h3>
+				<center>
+				<h2>min:{this.state.min} sec: {this.state.sec}</h2>
 				{
 					(()=>{
 						console.log('min',this.state.min);
 						console.log('sec',this.state.sec);
 					})()
 				}
+				</center>
 			</div>
 		);
 	}
 }
 
-export default Timer;

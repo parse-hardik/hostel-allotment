@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Profile from './Profile';
 import './Home.css';
 import Roles from './Roles.js';
+import Timer from './Timer.js';
 
 class Home extends Component{
 	constructor()
@@ -44,7 +45,12 @@ class Home extends Component{
 						if(this.state.role==='none')
 							return <Roles username={this.props.username} role={this.state.role}/>
 						else
-							return <Profile username={this.props.username} email={this.props.email} role={this.state.role}/>
+              return (
+              <div>
+              <Profile username={this.props.username} email={this.props.email} role={this.state.role}/>
+              <Timer />
+              </div>
+              )
 					})()
 				}
 			</div>

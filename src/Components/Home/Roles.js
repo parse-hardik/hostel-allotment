@@ -2,7 +2,7 @@ import React from 'react';
 import Member from './Photos/Member.png';
 import Leader from './Photos/Leader.png';
 import Profile from './Profile';
-import Timer from './Timer ';
+import Timer from './Timer.js';
 
 var username = '';
 
