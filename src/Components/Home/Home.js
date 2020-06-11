@@ -29,8 +29,7 @@ class Home extends Component{
           window.localStorage.setItem('wing',res.wing);
           console.log(res);
         }
-        else
-          if(res.member===true)
+        else if(res.member===true)
           {
             this.setState({role:'member'});
             window.localStorage.setItem('role','member');
@@ -40,11 +39,12 @@ class Home extends Component{
             this.setState({role:'Admin'});
             window.localStorage.setItem('role','admin');
         }
-          else
+        else
           {
             this.setState({role:'none'});
             window.localStorage.setItem('role','none');
           }
+          window.localStorage.setItem('group',res.gname)
         // console.log('checkRole is',this.state.role)  
         // this.props.setRole(this.state.role)
       })
