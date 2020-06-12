@@ -1,14 +1,20 @@
 import React from 'react';
 import './Landing.css';
+//import Routes from'./../../Routes.js';
+import history from './../../history.js';
 function Landing(){
+
+  
     return(
+      
       <div className="landing-page">
+        
           <div className="bg-image">
             <div className="heading">
                 <span className="sub1">
                 Find The Wing You Want
                 </span>
-                <a href =""className="sub">
+                <a href =""className="sub" onClick={() => history.push('/Sigin')}>
                     Get Started
                 </a>  
                 

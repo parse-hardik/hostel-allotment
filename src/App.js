@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import Dashboard from './Components/Dashboard/Dashboard';
 import SignIn from './Components/SignIn';
 import Register from './Components/Register';
-
 import './App.css';
 
 
@@ -48,7 +47,7 @@ class App extends Component{
             :
               <SignIn onRegister={this.onRegister} onSignIn={this.onSignIn} giveUsername={this.giveUsername}/>
           }
-           
+          
           </div>
           
       );
