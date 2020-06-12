@@ -166,7 +166,7 @@ class Meera extends Component{
 				})
 			}	
 	  	}
-		else 
+		else if(window.localStorage.getItem('role')==='leader' && window.localStorage.getItem('wing')=="null")
 		{
 			axios.post('http://localhost:5000/setSelected',{ bhawan:this.props.Bhawan,floor:floor,wingNo:wing})
 	  			.then(res =>{
@@ -184,8 +184,14 @@ class Meera extends Component{
   							console.log(res.data);
   							this.reload();
   							})
-  						}),
+						  }),
+						
 					   Dialog.OKAction(()=>{
+						axios.post('http://localhost:5000/selectWing',{wing : this.props.Bhawan+"-"+floor+"-"+wing ,user:window.localStorage.username})
+						.then(res =>{
+							window.localStorage.setItem('wing',this.props.Bhawan+"-"+floor+"-"+wing);
+							this.reload();
+						});
 					   	alert('Wing Selected Successfully');
 					   	this.reload();
 					   })
@@ -203,6 +209,15 @@ class Meera extends Component{
 				})
 			}
 
+		}
+		else{
+			this.dialog.show({
+				body:"You cannot Select a wing.",
+				actions:[
+				   Dialog.OKAction(()=>{
+				   })
+				]
+			})
 		}
 
 	}

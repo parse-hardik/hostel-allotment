@@ -62,6 +62,7 @@ class SignIn extends React.Component {
         if(res.name!==undefined){
           this.props.giveUsername(this.state.username);
           this.props.onSignIn();
+          res.name==='admin'? window.localStorage.setItem('isAdmin',true): window.localStorage.setItem('isAdmin',false);
         }
         else
           alert('Incorrect combination');
