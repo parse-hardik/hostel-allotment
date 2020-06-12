@@ -11,7 +11,8 @@ class Roles extends React.Component{
 	    super();
 	    this.state={
 	      username:'',
-	      distributed:false
+		  distributed:false,
+		  users:[]
 	    }
 	  }
 
@@ -51,12 +52,48 @@ class Roles extends React.Component{
       })
       .catch(err=>console.log);
 	}
+	checkIfLeaderPossible=(event)=>{
+		let noOfLeaders=0;
+		console.log('username is',username);
+		this.state.users.forEach(user=>{
+			console.log(user);
+			if(user.leader===true)
+			{
+				noOfLeaders++;
+				console.log(noOfLeaders);
+			}
+			
+		})
+		if(noOfLeaders<6)
+			this.setLeader(event);
+		else
+		{
+			alert('You cannot be a leader beacuse we already hv 6 leaders');
+			this.setMember(event);
+		}
+			
+
+   }
 
 	componentDidMount(){
 		console.log('Username is',this.props.username)
 		console.log('Role is',this.props.role)
 		this.setState({username:this.props.username});
 		username=this.props.username;
+			
+		fetch('http://localhost:5000/getUsers',{
+		method:'get',
+		headers: {'Content-Type':'application/json'}
+		})
+		.then((res)=>res.json())
+		.then(res => {
+			this.setState({users : res});
+		})
+		.catch(function(err) {
+			console.log(err);
+		});
+			
+   
 	}
 	render()
 	{
@@ -70,7 +107,7 @@ class Roles extends React.Component{
 						<br></br>
 					<center>
 						<figure class="figure">
-						  <img onClick={this.setLeader} src={Leader} class="imgleader hi"/>
+						  <img onClick={this.checkIfLeaderPossible} src={Leader} class="imgleader hi"/>
 						  <figcaption class="figure-caption f4">Leader</figcaption>
 						</figure>
 						<figure class="figure">
