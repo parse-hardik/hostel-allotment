@@ -72,12 +72,6 @@ export default class Timer extends Component {
 			<div>
 				<center>
 				<h2>min:{this.state.min} sec: {this.state.sec}</h2>
-				{
-					(()=>{
-						console.log('min',this.state.min);
-						console.log('sec',this.state.sec);
-					})()
-				}
 				</center>
 			</div>
 		);
