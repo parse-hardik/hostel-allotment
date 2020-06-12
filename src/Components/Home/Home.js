@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Profile from './Profile';
 import './Home.css';
 import Roles from './Roles.js';
+import Timer from './Timer.js';
 
 class Home extends Component{
 	constructor()
@@ -23,12 +24,28 @@ class Home extends Component{
     }).then((res)=>res.json())
       .then(res=>{
         if(res.leader===true)
-          this.setState({role:'leader'})
+        {
+          this.setState({role:'leader'});
+          window.localStorage.setItem('role','leader');
+          window.localStorage.setItem('wing',res.wing);
+          console.log(res);
+        }
+        else if(res.member===true)
+          {
+            this.setState({role:'member'});
+            window.localStorage.setItem('role','member');
+          }
+        else if( window.localStorage.getItem('isAdmin')==="true")
+        {
+            this.setState({role:'Admin'});
+            window.localStorage.setItem('role','admin');
+        }
         else
-          if(res.member===true)
-            this.setState({role:'member'})
-          else
-            this.setState({role:'none'})
+          {
+            this.setState({role:'none'});
+            window.localStorage.setItem('role','none');
+          }
+          window.localStorage.setItem('group',res.gname)
         // console.log('checkRole is',this.state.role)  
         // this.props.setRole(this.state.role)
       })
@@ -44,7 +61,12 @@ class Home extends Component{
 						if(this.state.role==='none')
 							return <Roles username={this.props.username} role={this.state.role}/>
 						else
-							return <Profile username={this.props.username} email={this.props.email} role={this.state.role}/>
+              return (
+              <div>
+              <Profile username={this.props.username} email={this.props.email} role={this.state.role}/>
+              <Timer />
+              </div>
+              )
 					})()
 				}
 			</div>

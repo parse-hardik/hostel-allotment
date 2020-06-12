@@ -2,8 +2,10 @@ import React from 'react';
 import Member from './Photos/Member.png';
 import Leader from './Photos/Leader.png';
 import Profile from './Profile';
+import Timer from './Timer.js';
 
-var username='';
+var username = '';
+
 
 class Roles extends React.Component{
 	constructor()
@@ -11,57 +13,92 @@ class Roles extends React.Component{
 	    super();
 	    this.state={
 	      username:'',
-	      distributed:false
+		  distributed:false,
+		  users:[]
 	    }
 	  }
 
-	  onSet=(event)=>{
-    this.setState({distributed:true});
-  }
 
-	  setLeader=(event)=>{
-	 	console.log('username is',username);
-	   fetch('http://localhost:5000/setLeader',{
-      method:'post',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({
-        username:username
-      })
-    }).then(res=>res.json())
-      .then((res)=>{
-      	alert('Your role has been set to Group Leader!!')
-        this.onSet();
-      })
-      .catch(err=>console.log);
-      
-	}	
+	setLeader = (event) => {
+		console.log('username is', username);
+		fetch('http://localhost:5000/setLeader', {
+			method: 'post',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				username: username
+			})
+		}).then(res => res.json())
+			.then((res) => {
+				alert('Your role has been set to Group Leader!!')
+				this.onSet();
+			})
+			.catch(err => console.log);
 
-	 setMember=(event)=>{
-	 	console.log('username is',username);
-	   fetch('http://localhost:5000/setMember',{
-      method:'post',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({
-        username:username
-      })
-    }).then(res=>res.json())
-      .then((res)=>{
-      	alert('Your role has been set to Group Member!!')
-      	this.onSet();        
-      })
-      .catch(err=>console.log);
 	}
+
+	setMember = (event) => {
+		console.log('username is', username);
+		fetch('http://localhost:5000/setMember', {
+			method: 'post',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				username: username
+			})
+		}).then(res => res.json())
+			.then((res) => {
+				alert('Your role has been set to Group Member!!')
+				this.onSet();
+			})
+			.catch(err => console.log);
+	}
+	checkIfLeaderPossible=(event)=>{
+		let noOfLeaders=0;
+		console.log('username is',username);
+		this.state.users.forEach(user=>{
+			console.log(user);
+			if(user.leader===true)
+			{
+				noOfLeaders++;
+				console.log(noOfLeaders);
+			}
+			
+		})
+		if(noOfLeaders<6)
+			this.setLeader(event);
+		else
+		{
+			alert('You cannot be a leader beacuse we already hv 6 leaders');
+			this.setMember(event);
+		}
+			
+
+   }
 
 	componentDidMount(){
 		console.log('Username is',this.props.username)
 		console.log('Role is',this.props.role)
 		this.setState({username:this.props.username});
 		username=this.props.username;
+			
+		fetch('http://localhost:5000/getUsers',{
+		method:'get',
+		headers: {'Content-Type':'application/json'}
+		})
+		.then((res)=>res.json())
+		.then(res => {
+			this.setState({users : res});
+		})
+		.catch(function(err) {
+			console.log(err);
+		});
+			
+   
+
 	}
-	render()
-	{
-		return(
+	render() {
+		return (
 			<div>
+
 			{
 					this.state.distributed===false ?
 					<div>
@@ -70,7 +107,7 @@ class Roles extends React.Component{
 						<br></br>
 					<center>
 						<figure class="figure">
-						  <img onClick={this.setLeader} src={Leader} class="imgleader hi"/>
+						  <img onClick={this.checkIfLeaderPossible} src={Leader} class="imgleader hi"/>
 						  <figcaption class="figure-caption f4">Leader</figcaption>
 						</figure>
 						<figure class="figure">
@@ -80,11 +117,15 @@ class Roles extends React.Component{
 					</center>
 				</div>
 				:
+      <div>
 				<Profile />
+          <Timer />
+      </div>
 				}
+				
 			</div>
 		);
 	}
-}				
+}
 
 export default Roles;
