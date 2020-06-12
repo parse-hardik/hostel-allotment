@@ -17,6 +17,7 @@ class Dashboard extends React.Component{
 	componentDidMount()
 	{
 		name=this.props.username;
+		window.localStorage.setItem('username',this.props.username);
 		// console.log('Dashboard mein, username is',name);
 	}
 
