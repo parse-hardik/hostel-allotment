@@ -14,18 +14,32 @@ var name=" ";
 
 class Dashboard extends React.Component{
 
+	constructor(){
+		super();
+		this.state={
+			admin: window.localStorage.getItem('isAdmin'),
+		}
+	}
+	
+	
+	reload = () => {
+		//RELOAD COMPONENT
+		this.componentDidMount();
+	};
+
 	componentDidMount()
 	{
 		name=this.props.username;
 		window.localStorage.setItem('username',this.props.username);
 		// console.log('Dashboard mein, username is',name);
+		window.addEventListener('storage',e =>{return this.reload} )
 	}
 
 	onLogout=(e)=>{
 		window.localStorage.setItem('isAdmin',false);
 		window.history.pushState(null, document.title, window.location.href);
 		window.addEventListener('popstate', function (event){
-			window.history.pushState(null, document.title,  window.location.href);
+		window.history.pushState(null, document.title,  window.location.href);
 		});
 	}
 	
@@ -33,7 +47,7 @@ class Dashboard extends React.Component{
 	{
 		return(
 			<Router>
-
+				{console.log(this.state.admin)}
 			  <nav className="navbar navbar-dark navito">
 			    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
 			      <span className="navbar-toggler-icon"></span>
@@ -58,7 +72,7 @@ class Dashboard extends React.Component{
 				    </Link>
 				    
 				    <Link to="/notifications" >
-				      <button className="ptr db fw6 lh-copy white f3 navito b--transparent navbar-toggler mb-3" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation" style={{display: window.localStorage.getItem('isAdmin')==="true" ? 'none' : 'block' }}>Notifications<span class="badge badge-pill badge-dark">6</span> </button>
+				      <button className="ptr db fw6 lh-copy white f3 navito b--transparent navbar-toggler mb-3" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation" style={{display: this.props.username==="admin" ? 'none' : 'block' }}>Notifications<span class="badge badge-pill badge-dark">6</span> </button>
 				    </Link>
 
 				    <Link to="/groups" >
@@ -66,11 +80,11 @@ class Dashboard extends React.Component{
 				    </Link>
 
 				    <Link to="/users" >
-				      <button className="ptr db fw6 lh-copy white f3 navito b--transparent navbar-toggler mb-3" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation" style={{display: window.localStorage.getItem('isAdmin')==="true" ? 'none' : 'block' }}>View Users   </button>
+				      <button className="ptr db fw6 lh-copy white f3 navito b--transparent navbar-toggler mb-3" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation" style={{display: this.props.username==="admin" ? 'none' : 'block' }}>View Users   </button>
 				    </Link>
 
 					<Link to="/admin" >
-					<button className="ptr db fw6 lh-copy white f3 navito b--transparent navbar-toggler " data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation" style={{display: window.localStorage.getItem('isAdmin')==="true" ? 'block' : 'none' }}>Admin Controls  </button>
+					<button className="ptr db fw6 lh-copy white f3 navito b--transparent navbar-toggler " data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation" style={{display: this.props.username==="admin" ? 'block' : 'none' }}>Admin Controls  </button>
 					</Link>
 			    </div>
 			  </div>

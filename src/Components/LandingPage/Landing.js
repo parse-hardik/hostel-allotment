@@ -14,7 +14,8 @@ function Landing(){
                 <span className="sub1">
                 Find The Wing You Want
                 </span>
-                <a href ="" className="sub " onClick={() => history.push('/Sigin')}>
+
+                <a href =""className="sub" onClick={() => history.push('/Signin')}>
                     Get Started
                 </a>  
                 

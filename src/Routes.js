@@ -9,7 +9,7 @@ export default class Routes extends Component {
 		return (
 			<Router history={history}>
 				<Switch>
-					<Route path="/Sigin" render={() => (<App />)} />
+					<Route path="/Signin" render={() => (<App />)} />
 					<Route path="/" exact render={()=>(<Landing/>)} />
 				</Switch>
 			</Router>
