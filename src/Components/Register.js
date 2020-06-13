@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Particles from 'react-particles-js';
-
+import './SignIn.css';
+import history from '../history.js';
 const particlesOptions={
   particles: {
     number:{
@@ -108,27 +109,29 @@ class Register extends Component{
 			      <legend className="f1 fw6 ph0 mh0">Sign In</legend>
 			      <div className="mt3">
 			        <label className="db fw6 lh-copy f3" for="username">Name</label>
-			        <input onChange={this.onNameChange} className="pa2 b--white-20 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="username"  id="username" />
+			        <input onChange={this.onNameChange} className="pa2 b--white-20 input-reset ba w-100 text" type="text" name="username"  id="username" />
 			      </div>
 			       <div className="mt3">
 			        <label className="db fw6 lh-copy f3" for="username">Username</label>
-			        <input onChange={this.onUsernameChange} className="pa2 b--white-20 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="username"  id="username" />
+			        <input onChange={this.onUsernameChange} className="pa2 b--white-20 input-reset ba  w-100 text" type="text" name="username"  id="username" />
 			      </div>
 			       <div className="mt3">
 			        <label className="db fw6 lh-copy f3" for="username">Email</label>
-			        <input onChange={this.onEmailChange} className="pa2 b--white-20 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="username"  id="username" />
+			        <input onChange={this.onEmailChange} className="pa2 b--white-20 input-reset ba  w-100 text" type="text" name="username"  id="username" />
 			      </div>
 			      <div className="mv3">
 			        <label className="db fw6 lh-copy f3" for="password">Password</label>
-			        <input onChange={this.onPasswordChange} className="b pa2 b--white-20 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="password" name="password"  id="password" />
+			        <input onChange={this.onPasswordChange} className="b pa2 b--white-20 input-reset ba  w-100 text" type="password" name="password"  id="password" />
 			      </div>
 			       <div className="mt3">
 			        <label className="db fw6 lh-copy f3" for="username">Re Enter Password</label>
-			        <input onChange={this.onReEnter} className="pa2 b--white-20 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="password" name="username"  id="username" />
+			        <input onChange={this.onReEnter} className="pa2 b--white-20 input-reset ba w-100 text" type="password" name="username"  id="username" />
 			      </div>
 			    </fieldset>
 			    <div className="flex justify-around">
+				<a href =""className="" onClick={() => history.push('/Sigin')}>
 			      <input onClick={this.joinUser} className="b ph3 pv2 white input-reset ba b--white-20 bg-transparent grow pointer f4 dib" type="submit" value="Register" />
+				  </a>
 			      <input onClick={this.props.Back}  className="b ph3 pv2 white input-reset ba b--white-20 bg-transparent grow pointer f4 dib" type="submit" value="Back" />
 			    </div>
 			  </div>

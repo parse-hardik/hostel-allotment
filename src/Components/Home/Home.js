@@ -62,9 +62,9 @@ class Home extends Component{
 							return <Roles username={this.props.username} role={this.state.role}/>
 						else
               return (
-              <div>
-              <Profile username={this.props.username} email={this.props.email} role={this.state.role}/>
-              <Timer />
+              <div className="home-page">
+              <Profile username={this.props.username} email={this.props.email} role={this.state.role} className="Profile"/>
+              <Timer className="Timer" />
               </div>
               )
 					})()
