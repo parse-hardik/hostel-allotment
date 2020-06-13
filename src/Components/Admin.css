@@ -1,0 +1,4 @@
+.statistics{
+    display: flex;
+    flex-wrap: wrap;
+}

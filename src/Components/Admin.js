@@ -1,134 +1,130 @@
 import React,{Component} from 'react';
 import Axios from 'axios';
-import { PieChart } from 'react-minimal-pie-chart';
-import Card from "react-bootstrap/Card";
+import './Admin.css';
+import { Chart } from "react-google-charts";
+const baroptions = {
+    title: 'Categories selected by students',
+    chartArea: { width: '50%' },
+    hAxis: {
+    title: 'Number of students',
+    minValue: 0,
+    },
+    vAxis: {
+    title: 'Category selected',
+    },
+};
+  const bardata = [
+    ['Type', 'Number'],
+    ['Leader',0],
+    ['Member', 0],
+    ['None',0],
+];
+const threedata=
+    [
+        ['Status', 'Number Of Wings'],
+        ['Selected', 0],
+        ['Free', 0],
+        ['Blocked', 0],
+    ];
 
+const threeoptions={    
+        title: 'Wing distinctions for meera bhawan',
+        is3D: true,
+    };
+
+  const pieoptions = {
+    title: 'Student Seggregation',
+    pieHole: 0.4,
+    
+  };
+  const piedata = [
+    ["Type", "Number"],
+    ["Not in any group", 0],
+    ["In a group", 0],
+  ];
 export default class Admin extends Component{
  constructor(){
      super();
-     this.state={
-        total: 0,
-        nogroup :0,
-     }
  }
+
  componentDidMount(){
      Axios.get('http://localhost:5000/getUsers')
      .then((res)=>{
          console.log(res.data);
-         this.setState({total :res.data.length});
-         var count =0;
+         var count =0,leader=0,member=0,neither=0;
          res.data.map((obj,index)=>{
-             if(obj.gname==='null' && obj.name!=='admin')
+            if(obj.gname==='null' && obj.name!=='admin')
               count++;
+            if(obj.leader===true)
+              leader++;
+            else if(obj.member===true )
+              member++;
+            else
+              neither++;
             return count;
          })
-         this.setState({ nogroup : count});
+         piedata[1][1]=count;
+         piedata[2][1]=res.data.length-count;
+         bardata[1][1]=leader;
+         bardata[2][1]=member;
+         bardata[3][1]=neither;
+     })
+
+     Axios.get('http://localhost:5000/getWing')
+     .then((res)=>{
+         console.log(res.data);
+         var free =0,blocked=0,selected=0;
+         res.data.map((obj,index)=>{
+            if(obj.bhawan==='meera')
+            {
+                if(obj.status==='selected')
+                    selected++;
+                else if(obj.status==='free')
+                    free++;
+                else
+                    blocked++;
+            }
+         })
+         threedata[1][1]=selected;
+         threedata[2][1]=free;
+         threedata[3][1]=blocked;
      })
  }
  render(){
      return(
-         <div>
-             <h1>Admin Page!!!</h1>
-             {console.log(this.state.total)}
-             {console.log(this.state.nogroup)}
-             <div className="d-flex justify-content-around">
-                 <div>
-                    <Card style={{ width: '25rem' ,backgroundColor :'#a4c8f5', height :'33rem'}}>
-                    <Card.Body>
-                    <PieChart
-                        animation='true'
-                        animationDuration={500}
-                        animationEasing="ease-out"
-                        radius ='30'
-                        data={[
-                        {
-                        color: "#E38627",
-                        title: "In a group",
-                        value: this.state.total-this.state.nogroup,
-                        },
-                        {
-                        color: "#C13C37",
-                        title: "Not in a group",
-                        value: this.state.nogroup,
-                        }
-                        ]}
-                        label={(data) => data.dataEntry.title}
-                        labelPosition={110}
-                        lengthAngle={360}
-                        lineWidth={35}
-                        paddingAngle={0}
-                        startAngle={0}
-                        viewBoxSize={[110, 110]}
-                        style={{height: '350px'}}
-                        labelStyle={{
-                            fontSize: "5px",
-                            fontColor: "FFFFFA",
-                            fontWeight: "800",
-                        }}
+         
+             <div className="statistics">
+               
+                <Chart
+                    width={'600px'}
+                    height={'400px'}
+                    chartType="PieChart"
+                    loader={<div>Loading Chart</div>}
+                    data={piedata}
+                    options={pieoptions}
                     />
-                    <Card.Text>
-                    <center>
-                       <h4> Total = {this.state.total}</h4>
-                   
-                       <h4> Part of a group = {this.state.total-this.state.nogroup}</h4>
-                   
-                        <h4>Not in a group = {this.state.nogroup}</h4>
-                        </center>
-                    </Card.Text>
-                    </Card.Body>
-                    </Card>
-                </div>
-                <div>
-                    <Card style={{ width: '25rem' ,backgroundColor :'#a4c8f5', height :'33rem'}}>
-                    <Card.Body>
-                    <PieChart
-                        animation='true'
-                        animationDuration={500}
-                        animationEasing="ease-out"
-                        radius ='30'
-                        data={[
-                        {
-                        color: "#E38627",
-                        title: "In a group",
-                        value: this.state.total-this.state.nogroup,
-                        },
-                        {
-                        color: "#C13C37",
-                        title: "Not in a group",
-                        value: this.state.nogroup,
-                        }
-                        ]}
-                        label={(data) => data.dataEntry.title}
-                        labelPosition={110}
-                        lengthAngle={360}
-                        lineWidth={35}
-                        paddingAngle={0}
-                        startAngle={0}
-                        viewBoxSize={[110, 110]}
-                        style={{height: '350px'}}
-                        labelStyle={{
-                            fontSize: "5px",
-                            fontColor: "FFFFFA",
-                            fontWeight: "800",
-                        }}
+              
+                <Chart
+                    width={'600px'}
+                    height={'400px'}
+                    chartType="BarChart"
+                    loader={<div>Loading Chart</div>}
+                    data={bardata}
+                    options={baroptions}
                     />
-                    <Card.Text>
-                        <center>
-                       <h4> Total = {this.state.total}</h4>
-                   
-                       <h4> Part of a group = {this.state.total-this.state.nogroup}</h4>
-                   
-                        <h4>Not in a group = {this.state.nogroup}</h4>
-                        </center>
-                    </Card.Text>
-                    </Card.Body>
-                    </Card>
-                </div>
-                <div>
-                    <h3>Something else</h3>
-                </div>
+            
+                <Chart
+                    width={'700px'}
+                    height={'400px'}
+                    chartType="PieChart"
+                    loader={<div>Loading Chart</div>}
+                    data={threedata}
+                    options={threeoptions}
+                    rootProps={{ 'data-testid': '2' }}
+                    />
+             
             </div>
-         </div>
+        
      )
  }
 }
