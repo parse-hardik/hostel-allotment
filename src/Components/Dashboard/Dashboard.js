@@ -43,7 +43,7 @@ class Dashboard extends React.Component{
 				  </a>
 			    <Form inline>
 			    <label className="ptr db fw6 lh-copy white f3 navito b--transparent justify-content-end mr-5">{this.props.username}</label>
-				<button className="ptr db fw6 lh-copy white f3 navito b--transparent " onClick={this.onLogout}><a href='/'>Logout</a></button>
+				<button className="ptr db fw6 lh-copy white f3 navito b--transparent " onClick={this.onLogout}><a href='/' className="no-underline">Logout</a></button>
 			  	</Form>
 			  </nav>
 			<div className="pos-f-t">

@@ -39,7 +39,9 @@
 .sub:hover{
     cursor: pointer;
     color:grey;
+    text-decoration: none;
 }
+
 .sub-heading{
     font-family: 'Indie Flower', cursive;
     font-size: 30px;
@@ -137,4 +139,4 @@
       display: none;
     }
   }
-  
+
