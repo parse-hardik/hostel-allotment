@@ -2,6 +2,16 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './Timer.css';
 export default class Timer extends Component {
+	constructor()
+	  {
+	    super();
+	    this.state={
+		  days:'',
+		  hours:'',
+		  minutes:'',
+		  seconds:'',
+		}
+	  }
 
 
 	componentDidMount() {
@@ -18,25 +28,29 @@ export default class Timer extends Component {
 				  console.log(countDown);
 			  	let x = setInterval(function() { 		  
 				let now = new Date().getTime(),
-					distance = countDown - now;		  
-					document.getElementById('days').innerText = Math.floor(distance / (day));
-				  document.getElementById('hours').innerText = Math.floor((distance % (day)) / (hour));
-				  document.getElementById('minutes').innerText = Math.floor((distance % (hour)) / (minute));
-				  document.getElementById('seconds').innerText = Math.floor((distance % (minute)) / second);
-			  }, second)
+					distance = countDown - now;		
+				let td=  Math.floor(distance / (day)), th=Math.floor((distance % (day)) / (hour)),tm=Math.floor((distance % (hour)) / (minute)),ts=Math.floor((distance % (minute)) / second);
+				
+				
+					console.log('in the function');
+					console.log('hi',td,th,tm,ts);
+					this.setState({days: td,hours:th,minutes:tm,seconds:ts});
+				
+			  }.bind(this), second)
 				
 			 })
 	}
+	
 	render() {
 		return (
 			<div>
 				<div class="container-timer">
 				<h1 className="timer-heading">Countdown to end of Sprint 1/2</h1>
 				<ul className="unordered-list">
-					<li className="list-item"><span id="days"></span>Days</li>
-					<li className="list-item"><span id="hours"></span>Hours</li>
-					<li className="list-item"><span id="minutes"></span>Minutes</li>
-					<li className="list-item"><span id="seconds"></span>Seconds</li>
+					<li className="list-item"><span id="days">{this.state.days}</span>Days</li>
+					<li className="list-item"><span id="hours">{this.state.hours}</span>Hours</li>
+					<li className="list-item"><span id="minutes">{this.state.minutes}</span>Minutes</li>
+					<li className="list-item"><span id="seconds">{this.state.seconds}</span>Seconds</li>
 					
 				</ul>
 				</div>
