@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import App from './App';
 import Landing from './Components/LandingPage/Landing';
 import Routes from './Routes';
-
+import Admin from './Components/Admin';
 
 ReactDOM.render(<Routes />, document.getElementById('root'));
 
