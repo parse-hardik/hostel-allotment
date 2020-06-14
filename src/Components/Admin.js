@@ -120,19 +120,23 @@ export default class Admin extends Component{
       <div>
           <div className="mt-5 mb-5">
           <center>
-          <h3 className="mb-3"> Select the day time and Sprint you want to start.</h3>
-          <DateTimePicker
-          onChange={this.onChange}
-          value={this.state.date}
-          className="timer"
-          />
-          {console.log(this.state.sprint)}
-          <select className="m-1 sprint ml-3"  onChange={this.onOptionChange} >
-           <option defaultValue="NA">Choose...</option>
-           <option value="Sprint 1">Sprint 1</option>
-           <option value="Sprint 2">Sprint 2</option>
-           </select>
-           <button type="button" class="btn btn-primary" onClick={this.submit}>Submit</button>
+          <h2 className="date-time"> Select the day time and Sprint you want to start.</h2>
+          <div className="date-time-form">
+            <div className="date-time-inputs">
+                <DateTimePicker
+                onChange={this.onChange}
+                value={this.state.date}
+                className="datepicker"
+                />
+                {console.log(this.state.sprint)}
+                <select className="sprint"  onChange={this.onOptionChange} >
+                <option defaultValue="NA">Choose...</option>
+                <option value="Sprint 1">Sprint 1</option>
+                <option value="Sprint 2">Sprint 2</option>
+                </select>
+            </div>
+            <button type="button" class="btn btn-primary" onClick={this.submit}>Submit</button>
+           </div>
           </center>
           
           </div>

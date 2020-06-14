@@ -72,7 +72,7 @@ class Dashboard extends React.Component{
 				    </Link>
 				    
 				    <Link to="/notifications" >
-				      <button className="ptr db fw6 lh-copy white f3 navito b--transparent navbar-toggler mb-3" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation" style={{display: this.props.username==="admin" ? 'none' : 'block' }}>Notifications<span class="badge badge-pill badge-dark">6</span> </button>
+				      <button className="ptr db fw6 lh-copy white f3 navito b--transparent navbar-toggler mb-3" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation" style={{display: this.props.username==="admin" ? 'none' : 'block' }}>Notifications </button>
 				    </Link>
 
 				    <Link to="/groups" >

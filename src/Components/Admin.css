@@ -6,5 +6,25 @@
     width: 300px;
 }
 .sprint{
-    width: 200px;
+    width:300px;
+   
+    height: 50px;
+}
+.datepicker{
+    width:300px;
+  
+    height: 50px;
+}
+.date-time{
+   margin-bottom: 70px;
+}
+.date-time-form{
+    width:650px;
+    margin:20px auto;
+    
+}
+.date-time-inputs{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
 }
