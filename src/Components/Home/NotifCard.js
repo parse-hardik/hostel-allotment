@@ -78,7 +78,7 @@ componentDidMount()
           <div className=" card-front dib">        
            
               <h3 className="f3"> {this.state.fromgname} wants to invite you to their group.</h3>
-             { window.localStorage.getItem('group')==="null"|| window.localStorage.getItem('role')==='leader' ? 
+             { window.localStorage.getItem('group')==="null" && window.localStorage.getItem('sprint')==='Sprint 1' ? 
               <div>
               <button onClick={this.changetoAccept} type="button" className="btn btn-success grow" >Accept</button>
               <button onClick={this.changetoReject} type="button" className="btn btn-danger grow" >Reject</button>  
@@ -87,7 +87,6 @@ componentDidMount()
     }
           </div>           
       </div> 
-    
     </div>
   );
 

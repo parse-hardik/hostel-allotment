@@ -17,23 +17,24 @@ export default class Timer extends Component {
 	componentDidMount() {
 		axios.get('http://localhost:5000/timer/5edf6769c0264e6ed03657e9')
 			.then(res => {
-				console.log(res.data);
+				window.localStorage.setItem('sprint',res.data.for)
+				//console.log(res.data);
 				 var countdown = new Date(res.data.countdown);
-				 console.log(countdown);			
+				// console.log(countdown);			
 				const second = 1000,
 				minute = second * 60,
 				hour = minute * 60,
 				day = hour * 24;		  
 				  let countDown = new Date(countdown).getTime();//this is where u input the date
-				  console.log(countDown);
+				 // console.log(countDown);
 			  	let x = setInterval(function() { 		  
 				let now = new Date().getTime(),
 					distance = countDown - now;		
 				let td=  Math.floor(distance / (day)), th=Math.floor((distance % (day)) / (hour)),tm=Math.floor((distance % (hour)) / (minute)),ts=Math.floor((distance % (minute)) / second);
 				
 				
-					console.log('in the function');
-					console.log('hi',td,th,tm,ts);
+					//console.log('in the function');
+					//console.log('hi',td,th,tm,ts);
 					this.setState({days: td,hours:th,minutes:tm,seconds:ts});
 				
 			  }.bind(this), second)
@@ -45,7 +46,7 @@ export default class Timer extends Component {
 		return (
 			<div>
 				<div class="container-timer">
-				<h1 className="timer-heading">Countdown to end of Sprint 1/2</h1>
+		<h1 className="timer-heading">Countdown to end of {window.localStorage.getItem('sprint')}</h1>
 				<ul className="unordered-list">
 					<li className="list-item"><span id="days">{this.state.days}</span>Days</li>
 					<li className="list-item"><span id="hours">{this.state.hours}</span>Hours</li>

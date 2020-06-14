@@ -2,3 +2,9 @@
     display: flex;
     flex-wrap: wrap;
 }
+.timer{
+    width: 300px;
+}
+.sprint{
+    width: 200px;
+}

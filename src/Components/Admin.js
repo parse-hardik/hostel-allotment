@@ -2,6 +2,9 @@ import React,{Component} from 'react';
 import Axios from 'axios';
 import './Admin.css';
 import { Chart } from "react-google-charts";
+import DateTimePicker from 'react-datetime-picker';
+import Dialog from 'react-bootstrap-dialog';
+
 const baroptions = {
     title: 'Categories selected by students',
     chartArea: { width: '50%' },
@@ -45,12 +48,35 @@ const threeoptions={
 export default class Admin extends Component{
  constructor(){
      super();
+     this.state ={
+      date: new Date(),
+      sprint:"",
+     }
+ }
+
+ onChange = date => this.setState({ date:date})
+
+ submit =()=>{
+   console.log(this.state.date);
+   Axios.post('http://localhost:5000/timer/5edf6769c0264e6ed03657e9',{setTime :new Date(this.state.date) , sprint:this.state.sprint})
+   .then((res)=>
+   {
+    this.dialog.show({
+      body:'Sprint timings updated!',
+      actions:[
+        Dialog.OKAction(),
+      ]
+   })
+ })
+}
+
+ onOptionChange=(e)=>{
+    this.setState({sprint : e.target.value});
  }
 
  componentDidMount(){
      Axios.get('http://localhost:5000/getUsers')
      .then((res)=>{
-         console.log(res.data);
          var count =0,leader=0,member=0,neither=0;
          res.data.map((obj,index)=>{
             if(obj.gname==='null' && obj.name!=='admin')
@@ -72,7 +98,6 @@ export default class Admin extends Component{
 
      Axios.get('http://localhost:5000/getWing')
      .then((res)=>{
-         console.log(res.data);
          var free =0,blocked=0,selected=0;
          res.data.map((obj,index)=>{
             if(obj.bhawan==='meera')
@@ -92,8 +117,29 @@ export default class Admin extends Component{
  }
  render(){
      return(
-         
-             <div className="statistics">
+      <div>
+          <div className="mt-5 mb-5">
+          <center>
+          <h3 className="mb-3"> Select the day time and Sprint you want to start.</h3>
+          <DateTimePicker
+          onChange={this.onChange}
+          value={this.state.date}
+          className="timer"
+          />
+          {console.log(this.state.sprint)}
+          <select className="m-1 sprint ml-3"  onChange={this.onOptionChange} >
+           <option defaultValue="NA">Choose...</option>
+           <option value="Sprint 1">Sprint 1</option>
+           <option value="Sprint 2">Sprint 2</option>
+           </select>
+           <button type="button" class="btn btn-primary" onClick={this.submit}>Submit</button>
+          </center>
+          
+          </div>
+          <center>
+         <h2>Current Statistics</h2>
+         </center>
+          <div className="statistics mt-5">
                
                 <Chart
                     width={'600px'}
@@ -124,6 +170,8 @@ export default class Admin extends Component{
                     />
              
             </div>
+            <Dialog ref={(component) => { this.dialog = component }} />
+      </div>
         
      )
  }

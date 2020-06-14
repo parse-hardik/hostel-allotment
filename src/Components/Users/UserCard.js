@@ -29,14 +29,14 @@ class UserCard extends Component{
 	}
 checkIfCanSend(leaderName)
 {
-	console.log('ckecking');
+	//console.log('checking');
 	let noOfMembers=0;
 		this.state.users.forEach(user=>{
-			console.log(user);
+			//console.log(user);
 			if(user.gname===leaderName)
 			{
 				noOfMembers++;
-				console.log(noOfMembers);
+				//console.log(noOfMembers);
 			}
 			
 		})
@@ -44,34 +44,47 @@ checkIfCanSend(leaderName)
 			return true;
 		else
 		{
-			console.log('reutning false');
+			//console.log('reutning false');
 			return false;
 		}
 
 }
 sendMemRequest=()=>{
-	if( this.checkIfCanSend(this.props.superUser.username)===true)
+	if(window.localStorage.getItem('sprint')==='Sprint 1')
 	{
-		this.dialog.show({
-			body:'Do you want to send request to this member?',
-			actions:[
-			   Dialog.CancelAction(),
-			   Dialog.OKAction(() => {
-					  axios.post('http://localhost:5000/createNotif',{fromGname:this.props.superUser.username ,toUsername:this.props.user.username})
-					  .then(res =>{
-						  alert('Your req has been sent to ' + this.props.user.username + '!')
-						  console.log(res.data);
-					  })
-				  })
-			]
-		})
+		if( this.checkIfCanSend(this.props.superUser.username)===true)
+		{
+			this.dialog.show({
+				body:'Do you want to send request to this member?',
+				actions:[
+				Dialog.CancelAction(),
+				Dialog.OKAction(() => {
+						axios.post('http://localhost:5000/createNotif',{fromGname:this.props.superUser.username ,toUsername:this.props.user.username})
+						.then(res =>{
+							alert('Your req has been sent to ' + this.props.user.username + '!')
+							console.log(res.data);
+						})
+					})
+				]
+			})
+		}
+		else{
+			alert('You cannot send anymore requests for ppl to join your grp as u already have 5 ppl');
+		}
 	}
 	else{
-		alert('You cannot send anymore requests for ppl to join your grp as u already have 5 ppl');
+		this.dialog.show({
+			body: 'You cannot send a request in the current Sprint',
+			actions:[
+				Dialog.OKAction(),
+			]
+		})
 	}
 	
 }
 sendLeaderRequest=()=>{
+	if(window.localStorage.getItem('sprint')==='Sprint 1')
+	{
 	this.dialog.show({
 				body:'You cant send request because this person is a leader',
 				actions:[
@@ -79,6 +92,16 @@ sendLeaderRequest=()=>{
 				  
 				]
 			})
+	}
+	else{
+		this.dialog.show({
+			body: 'You cannot send a request in the current Sprint',
+			actions:[
+				Dialog.OKAction(),
+			]
+		})
+	}
+	
 }
 
 

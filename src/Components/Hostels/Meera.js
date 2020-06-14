@@ -166,7 +166,7 @@ class Meera extends Component{
 				})
 			}	
 	  	}
-		else if(window.localStorage.getItem('role')==='leader' && window.localStorage.getItem('wing')=="null")
+		else if(window.localStorage.getItem('role')==='leader' && window.localStorage.getItem('wing')=="null" && window.localStorage.getItem('sprint')=== "Sprint 2")
 		{
 			axios.post('http://localhost:5000/setSelected',{ bhawan:this.props.Bhawan,floor:floor,wingNo:wing})
 	  			.then(res =>{
