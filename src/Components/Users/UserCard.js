@@ -2,7 +2,8 @@ import React ,{Component} from 'react';
 import './UserCard.css';
 import axios from 'axios';
 import Dialog from 'react-bootstrap-dialog';
-
+import { AvatarGenerator } from 'random-avatar-generator';
+const generator = new AvatarGenerator();
 class UserCard extends Component{
 	constructor(props){
 		super(props);
@@ -86,7 +87,7 @@ sendLeaderRequest=()=>{
 	if(window.localStorage.getItem('sprint')==='Sprint 1')
 	{
 	this.dialog.show({
-				body:'You cant send request because this person is a leader',
+				body:'You cant send request because this person is not a member',
 				actions:[
 				   Dialog.CancelAction(),
 				  
@@ -108,23 +109,18 @@ sendLeaderRequest=()=>{
 render(){
 	return(
 		
-	<div class="mr3">
-	<div class="our-team-main">
-	
-	<div class="team-front">
-	<img src={`http://placehold.it/110x110/${this.props.name}00/fff?text=${this.props.name}`} class="img-fluid" />
-	
+	<div class="mr4 ml4">	
+	<div class="chip">	
+	<img src={generator.generateRandomAvatar()} alt="Person" width="96" height="96"></img>
+	<div className="">
+	<div className="text-user name-user">{this.props.name}</div>	
+	<div className="text-user type-user">{this.props.user.leader ? 'Leader' : this.props.user.member ? 'Member' : ' '}</div>
+	<button className="text-user req-user" onClick={this.props.superUser.leader ? this.props.user.member ? ()=>this.sendMemRequest(): ()=>this.sendLeaderRequest(): console.log('hi') }>
+	Send Request</button>	
 	</div>
-	
-	<div class="team-back">
-	<h4 className="tc blue f1">{this.props.user.leader ? 'Leader' : this.props.user.member ? 'Member' : ' '}</h4>
-	<h4 className="tc f2" onClick={this.props.superUser.leader ? this.props.user.member ? ()=>this.sendMemRequest(): ()=>this.sendLeaderRequest(): console.log('hi') }>
-	Click Me!</h4>
-
-	
 	</div>
 	<Dialog ref={(component) => { this.dialog = component }} />
-	</div>
+	
 	</div>
 
 	);
