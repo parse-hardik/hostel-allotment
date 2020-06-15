@@ -17,7 +17,7 @@ const UserCardList = ( {users,sendReq,superUser,role} ) =>
 	return(
 
 		<div className='d-flex flex-wrap ma2'>
-		{console.log(superUser)}
+		{/* {console.log(superUser)} */}
 			{cardArray}
 		</div>
 	);

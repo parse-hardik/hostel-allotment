@@ -44,7 +44,7 @@ export default class Timer extends Component {
 	render() {
 		return (
 			<div>
-				<div class="container-timer">
+				<div className="container-timer">
 		<h1 className="timer-heading">Countdown to end of {window.localStorage.getItem('sprint')}</h1>
 				<ul className="unordered-list">
 					<li className="list-item"><span id="days">{this.state.days}</span>Days</li>

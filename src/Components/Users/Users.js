@@ -31,7 +31,7 @@ class Group extends Component{
 	 	axios.post('https://hostelserver.herokuapp.com/getOneUser',{username: this.props.username})
         .then(res=>{
         this.setState({superUser:res.data[0]})
-         console.log(this.state.superUser)
+        //  console.log(this.state.superUser)
       	})
         .catch(err=>console.log);
 	 }
@@ -49,7 +49,7 @@ class Group extends Component{
 			return(
 				<div className='tc'>
 					<h1 className={`f1 tc`}>Users</h1>
-					<span class="glyphicon glyphicon-name"></span><SearchBox searchChange={ this.onSearchChange }/>
+					<span className="glyphicon glyphicon-name"></span><SearchBox searchChange={ this.onSearchChange }/>
 					<UserCardList users = { filteredUsers } sendReq={this.sendReq} superUser={this.state.superUser}/>
 				</div>
 		);

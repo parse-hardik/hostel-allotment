@@ -44,7 +44,7 @@ class Notifications extends Component{
     }).then((res)=>res.json())
       .then(res=>{
         this.setState({grps:res});
-        console.log(res);
+        // console.log(res);
       })
       .catch(err=>console.log);
   }    
@@ -71,7 +71,7 @@ class Notifications extends Component{
 		const {grps}= this.state;
 		const filteredGroups = grps;
 		return(
-			<div class='tc'>
+			<div className='tc'>
       <br></br>
       <h2 className="tc f2">Your Notifications</h2>
 

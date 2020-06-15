@@ -30,7 +30,6 @@ class Dashboard extends React.Component{
 	{
 		name=this.props.username;
 		window.localStorage.setItem('username',this.props.username);
-		// console.log('Dashboard mein, username is',name);
 		window.addEventListener('storage',e =>{return this.reload} )
 	}
 
@@ -46,12 +45,11 @@ class Dashboard extends React.Component{
 	{
 		return(
 			<Router>
-				{console.log(this.state.admin)}
 			  <nav className="navbar navbar-dark navito">
 			    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
 			      <span className="navbar-toggler-icon"></span>
 			    </button>
-			    <a class="navbar-brand">
+			    <a className="navbar-brand">
 				    <img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" height="30" alt="mdb logo" />
 				  </a>
 			    <Form inline>

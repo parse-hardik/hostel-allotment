@@ -63,7 +63,7 @@ sendMemRequest=()=>{
 						axios.post('https://hostelserver.herokuapp.com/createNotif',{fromGname:this.props.superUser.username ,toUsername:this.props.user.username})
 						.then(res =>{
 							alert('Your req has been sent to ' + this.props.user.username + '!')
-							console.log(res.data);
+							// console.log(res.data);
 						})
 					})
 				]
@@ -109,8 +109,8 @@ sendLeaderRequest=()=>{
 render(){
 	return(
 		
-	<div class="mr4 ml4">	
-	<div class="chip">	
+	<div className="mr4 ml4">	
+	<div className="chip">	
 	<img src={generator.generateRandomAvatar()} alt="Person" width="96" height="96"></img>
 	<div className="">
 	<div className="text-user name-user">{this.props.name}</div>	

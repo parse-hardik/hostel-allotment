@@ -8,7 +8,13 @@ class Layout extends Component{
 			<div>
 				<div>
 					<center>
-						<h2>Your allotted wing is {window.localStorage.getItem('wing')}</h2>
+						
+						{
+							window.localStorage.getItem('role')==='leader' && window.localStorage.getItem('wing')==="null" ?
+							<h2>Your allotted wing is {window.localStorage.getItem('wing')}</h2>
+							:
+							<div></div>
+						}
 						<h1>Select a Bhavan to see the Layout</h1>
 					</center>
 				</div>
