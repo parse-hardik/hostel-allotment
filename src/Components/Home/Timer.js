@@ -27,7 +27,7 @@ export default class Timer extends Component {
 				day = hour * 24;		  
 				  let countDown = new Date(countdown).getTime();//this is where u input the date
 				 // console.log(countDown);
-			  	let x = setInterval(function() { 		  
+			  	setInterval(function() { 		  
 				let now = new Date().getTime(),
 					distance = countDown - now;		
 				let td=  Math.floor(distance / (day)), th=Math.floor((distance % (day)) / (hour)),tm=Math.floor((distance % (hour)) / (minute)),ts=Math.floor((distance % (minute)) / second);
@@ -37,8 +37,7 @@ export default class Timer extends Component {
 					//console.log('hi',td,th,tm,ts);
 					this.setState({days: td,hours:th,minutes:tm,seconds:ts});
 				
-			  }.bind(this), second)
-				
+			  }.bind(this), second)			
 			 })
 	}
 	

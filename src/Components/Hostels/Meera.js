@@ -40,39 +40,38 @@ class Meera extends Component{
 	 				if(wing.floor==='1' && wing.status!=="free")
 	 				{
 
-	 			    if(wing.wingNo==='1')
-					    this.setState({
-	 						f1w1:"blocked"
-	 						});
-					if(wing.wingNo==='2')
-						this.setState({
-		 					f1w2:"blocked"
-		 					});
-					if(wing.wingNo==='3')
-						this.setState({
-	 						f1w3:"blocked"
-	 						});
-					if(wing.wingNo==='4')
-					this.setState({
-	 						f1w4:"blocked"
-	 					 	});
-					if(wing.wingNo==='5')
-					this.setState({
-	 						f1w5:"blocked"
-	 						});
-					if(wing.wingNo==='6')
-					this.setState({
-	 						f1w6:"blocked"
-	 						});
-					if(wing.wingNo==='7')
-					this.setState({
-	 						f1w7:"blocked"
-	 						});
-					if(wing.wingNo==='8')
-					this.setState({
-	 						f1w8:"blocked"
-	 						});
-
+						if(wing.wingNo==='1')
+							this.setState({
+								f1w1:"blocked"
+								});
+						if(wing.wingNo==='2')
+							this.setState({
+								f1w2:"blocked"
+								});
+						if(wing.wingNo==='3')
+							this.setState({
+								f1w3:"blocked"
+								});
+						if(wing.wingNo==='4')
+							this.setState({
+								f1w4:"blocked"
+								});
+						if(wing.wingNo==='5')
+							this.setState({
+								f1w5:"blocked"
+								});
+						if(wing.wingNo==='6')
+							this.setState({
+								f1w6:"blocked"
+								});
+						if(wing.wingNo==='7')
+							this.setState({
+								f1w7:"blocked"
+								});
+						if(wing.wingNo==='8')
+							this.setState({
+								f1w8:"blocked"
+								});
 	 				}
 	 				else if(wing.floor==='2' && wing.status!=="free")
 	 				{
@@ -90,23 +89,23 @@ class Meera extends Component{
 	 						f2w3:"blocked"
 	 						});
 					if(wing.wingNo==='4')
-					this.setState({
+						this.setState({
 	 						f2w4:"blocked"
 	 					 	});
 					if(wing.wingNo==='5')
-					this.setState({
+						this.setState({
 	 						f2w5:"blocked"
 	 						});
 					if(wing.wingNo==='6')
-					this.setState({
+						this.setState({
 	 						f2w6:"blocked"
 	 						});
 					if(wing.wingNo==='7')
-					this.setState({
+						this.setState({
 	 						f2w7:"blocked"
 	 						});
 					if(wing.wingNo==='8')
-					this.setState({
+						this.setState({
 	 						f2w8:"blocked"
 	 						});
 	 					

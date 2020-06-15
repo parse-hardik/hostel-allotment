@@ -43,8 +43,8 @@ class Group extends Component{
 	render(){
 			const {users,searchField}= this.state;
 
-			const filteredUsers = users.filter(users =>{
-			return users.name.toLowerCase().includes(searchField.toLowerCase());
+			const filteredUsers = users.filter(user =>{
+			return user.name.toLowerCase().includes(searchField.toLowerCase());
 			});
 			return(
 				<div className='tc'>
