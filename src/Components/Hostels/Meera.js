@@ -230,20 +230,20 @@ class Meera extends Component{
 					<h1>Layout Floor 1</h1>
 					<a className="button btn disabled m-0 washroom" href="#"></a>
 					<button name="meera floor1 wing 1"  className={"btn space m-0 wingleft "+(this.state.f1w1 !='free'?'disabled bg':'grow')}   onClick= {()=>this.selectWing('1','1',this.state.f1w1)}>1</button>
-					<button name="meera floor1 wing 2"  className="btn space m-0 wingright grow" onClick= {()=>this.selectWing('1','2',this.state.f1w2)}>2</button>
+					<button name="meera floor1 wing 2"  className={"btn space m-0 wingright "+(this.state.f1w2 !='free'?'disabled bg':'grow')}  onClick= {()=>this.selectWing('1','2',this.state.f1w2)}>2</button>
 					<a className="button btn disabled m-0 washroom" href="#"></a>
 					<br></br>
-					<button  name="meera floor1 wing 8" className="btn wingsidebottom m-0 grow" onClick= {()=>this.selectWing('1','8',this.state.f1w8)}>8</button>
+					<button  name="meera floor1 wing 8" className={"btn space m-0 wingsidebottom "+(this.state.f1w8 !='free'?'disabled bg':'grow')}  onClick= {()=>this.selectWing('1','8',this.state.f1w8)}>8</button>
 					<a className="button btn disabled m-0 qt" href="#"></a>
-					<button name="meera floor1 wing 3" type="button" className="btn m-0 wingsidetop grow " onClick= {()=>this.selectWing('1','3',this.state.f1w3)}>3</button>
+					<button name="meera floor1 wing 3" type="button" className={"btn space m-0 wingsidetop "+(this.state.f1w3 !='free'?'disabled bg':'grow')}  onClick= {()=>this.selectWing('1','3',this.state.f1w3)}>3</button>
 					<br></br>
-					<button name="meera floor1 wing 7" type="button" className="btn m-0 wingsidetop grow" onClick= {()=>this.selectWing('1','7',this.state.f1w7)}>7</button>
+					<button name="meera floor1 wing 7" type="button" className={"btn space m-0 wingsidetop "+(this.state.f1w7 !='free'?'disabled bg':'grow')} onClick= {()=>this.selectWing('1','7',this.state.f1w7)}>7</button>
 					<a className="button btn disabled m-0 qt" href="#"></a>
-					<button name="meera floor1 wing 4" type="button" className="btn m-0 wingsidebottom grow" onClick= {()=>this.selectWing('1','4',this.state.f1w4)}>4</button>
+					<button name="meera floor1 wing 4" type="button" className={"btn space m-0 wingsidebottom "+(this.state.f1w4 !='free'?'disabled bg':'grow')}  onClick= {()=>this.selectWing('1','4',this.state.f1w4)}>4</button>
 					<br></br>
 					<a className="button btn disabled m-0 washroom" href="#"></a>
-					<button name="meera floor1 wing 5" type="button" className="btn m-0 wingright grow " onClick= {()=>this.selectWing('1','5',this.state.f1w5)}>5</button>
-					<button name="meera floor1 wing 6" type="button" className="btn m-0 wingleft grow" onClick= {()=>this.selectWing('1','6',this.state.f1w6)}>6</button>
+					<button name="meera floor1 wing 5" type="button" className={"btn space m-0 wingright "+(this.state.f1w5 !='free'?'disabled bg':'grow')}  onClick= {()=>this.selectWing('1','5',this.state.f1w5)}>5</button>
+					<button name="meera floor1 wing 6" type="button" className={"btn space m-0 wingleft "+(this.state.f1w6 !='free'?'disabled bg':'grow')}  onClick= {()=>this.selectWing('1','6',this.state.f1w6)}>6</button>
 					<a className="button btn disabled washroom m-0" href="#"></a>
 					<Dialog ref={(component) => { this.dialog = component }} />
 					<br></br>
@@ -252,21 +252,21 @@ class Meera extends Component{
 				<div>
 					<h1>Layout Floor 2</h1>
 					<a className="button btn disabled m-0 washroom" href="#"></a>
-					<button name="meera floor1 wing 1"  className="btn space m-0 wingleft grow" onClick= {()=>this.selectWing('2','1',this.state.f2w1)}>1</button>
-					<button name="meera floor1 wing 2"  className="btn space m-0 wingright grow" onClick= {()=>this.selectWing('2','2',this.state.f2w2)}>2</button>
+					<button name="meera floor1 wing 1"  className={"btn space m-0 wingleft "+(this.state.f2w1 !='free'?'disabled bg':'grow')}  onClick= {()=>this.selectWing('2','1',this.state.f2w1)}>1</button>
+					<button name="meera floor1 wing 2" className={"btn space m-0 wingright "+(this.state.f2w2 !='free'?'disabled bg':'grow')} onClick= {()=>this.selectWing('2','2',this.state.f2w2)}>2</button>
 					<a className="button btn disabled m-0 washroom" href="#"></a>
 					<br></br>
-					<button  name="meera floor1 wing 8" className="btn wingsidebottom m-0 grow" onClick= {()=>this.selectWing('2','8',this.state.f2w8)}>8</button>
+					<button  name="meera floor1 wing 8" className={"btn space m-0 wingsidebottom "+(this.state.f2w8 !='free'?'disabled bg':'grow')} onClick= {()=>this.selectWing('2','8',this.state.f2w8)}>8</button>
 					<a className="button btn disabled m-0 qt" href="#"></a>
-					<button name="meera floor1 wing 3" type="button" className="btn m-0 wingsidetop grow " onClick= {()=>this.selectWing('2','3',this.state.f2w3)}>3</button>
+					<button name="meera floor1 wing 3" type="button" className={"btn space m-0 wingsidetop "+(this.state.f2w3 !='free'?'disabled bg':'grow')} onClick= {()=>this.selectWing('2','3',this.state.f2w3)}>3</button>
 					<br></br>
-					<button name="meera floor1 wing 7" type="button" className="btn m-0 wingsidetop grow" onClick= {()=>this.selectWing('2','7',this.state.f2w7)}>7</button>
+					<button name="meera floor1 wing 7" type="button" className={"btn space m-0 wingsidetop "+(this.state.f2w7 !='free'?'disabled bg':'grow')} onClick= {()=>this.selectWing('2','7',this.state.f2w7)}>7</button>
 					<a className="button btn disabled m-0 qt" href="#"></a>
-					<button name="meera floor1 wing 4" type="button" className="btn m-0 wingsidebottom grow" onClick= {()=>this.selectWing('2','4',this.state.f2w4)}>4</button>
+					<button name="meera floor1 wing 4" type="button" className={"btn space m-0 wingsidebottom "+(this.state.f2w4 !='free'?'disabled bg':'grow')} onClick= {()=>this.selectWing('2','4',this.state.f2w4)}>4</button>
 					<br></br>
 					<a className="button btn disabled m-0 washroom" href="#"></a>
-					<button name="meera floor1 wing 5" type="button" className="btn m-0 wingright grow " onClick= {()=>this.selectWing('2','5',this.state.f2w5)}>5</button>
-					<button name="meera floor1 wing 6" type="button" className="btn m-0 wingleft grow" onClick= {()=>this.selectWing('2','6',this.state.f2w6)}>6</button>
+					<button name="meera floor1 wing 5" type="button" className={"btn space m-0 wingright "+(this.state.f2w5 !='free'?'disabled bg':'grow')} onClick= {()=>this.selectWing('2','5',this.state.f2w5)}>5</button>
+					<button name="meera floor1 wing 6" type="button" className={"btn space m-0 wingleft "+(this.state.f2w6 !='free'?'disabled bg':'grow')} onClick= {()=>this.selectWing('2','6',this.state.f2w6)}>6</button>
 					<a className="button btn disabled washroom m-0" href="#"></a>
 					<Dialog ref={(component) => { this.dialog = component }} />
 					<br></br>

@@ -8,6 +8,7 @@ class Layout extends Component{
 			<div>
 				<div>
 					<center>
+						<h2>Your allotted wing is {window.localStorage.getItem('wing')}</h2>
 						<h1>Select a Bhavan to see the Layout</h1>
 					</center>
 				</div>
