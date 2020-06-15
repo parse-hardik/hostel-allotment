@@ -7,13 +7,13 @@ import Groups from '../Groups/Groups';
 class Layout extends Component{
 	render(){
 		return(
-	<div class="container-fluid">
+	<div className="container-fluid">
   <h1>Small Grid</h1>
   
-  <div class="row">
-    <div class="col-sm-3" style="background-color:yellow;">
+  <div className="row">
+    <div className="col-sm-3" style="background-color:yellow;">
     </div>
-    <div class="col-sm-9" style="background-color:pink;">
+    <div className="col-sm-9" style="background-color:pink;">
     </div>
   </div>
 </div>

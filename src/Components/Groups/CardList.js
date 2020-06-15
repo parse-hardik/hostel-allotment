@@ -10,7 +10,6 @@ const CardList = ( {groups , members, usergrp ,username} ) =>
           return mem;
     })
     
-    // console.log({getMembers})
 		return (
 			<Card className="dib"
 				key={groups[i].grpid} 

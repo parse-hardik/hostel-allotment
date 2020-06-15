@@ -20,7 +20,6 @@ class Roles extends React.Component{
 
 
 	setLeader = (event) => {
-		console.log('username is', username);
 		fetch('https://hostelserver.herokuapp.com/setLeader', {
 			method: 'post',
 			headers: { 'Content-Type': 'application/json' },
@@ -37,7 +36,6 @@ class Roles extends React.Component{
 	}
 
 	setMember = (event) => {
-		console.log('username is', username);
 		fetch('https://hostelserver.herokuapp.com/setMember', {
 			method: 'post',
 			headers: { 'Content-Type': 'application/json' },
@@ -53,8 +51,8 @@ class Roles extends React.Component{
 	}
 	checkIfLeaderPossible=(event)=>{
 		let noOfLeaders=0;
-		console.log('username is',username);
-		console.log(this.state.users.length);
+		// console.log('username is',username);
+		// console.log(this.state.users.length);
 		noOfLeaders=this.state.users.length;
 		if(noOfLeaders<6)
 			this.setLeader(event);
@@ -65,8 +63,8 @@ class Roles extends React.Component{
 		}
    }
 	componentDidMount(){
-		console.log('Username is',this.props.username)
-		console.log('Role is',this.props.role)
+		// console.log('Username is',this.props.username)
+		// console.log('Role is',this.props.role)
 		this.setState({username:this.props.username});
 		username=this.props.username;
 			
@@ -96,13 +94,13 @@ class Roles extends React.Component{
 					<legend className="f3 fw6 ph0 mh0 justifyNobackg"><br></br>Click on your role<br></br></legend>
 						<br></br>
 					<center>
-						<figure class="figure">
-						  <img onClick={this.checkIfLeaderPossible} src={Leader} class="imgleader hi"/>
-						  <figcaption class="figure-caption f4">Leader</figcaption>
+						<figure className="figure">
+						  <img onClick={this.checkIfLeaderPossible} src={Leader} className="imgleader hi"/>
+						  <figcaption className="figure-caption f4">Leader</figcaption>
 						</figure>
-						<figure class="figure">
-						  <img onClick={this.setMember} src={Member} class="imgleader hi"/>
-						  <figcaption class="figure-caption f4">Group Member</figcaption>
+						<figure className="figure">
+						  <img onClick={this.setMember} src={Member} className="imgleader hi"/>
+						  <figcaption className="figure-caption f4">Group Member</figcaption>
 						</figure>
 					</center>
 				</div>

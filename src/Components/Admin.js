@@ -57,7 +57,6 @@ export default class Admin extends Component{
  onChange = date => this.setState({ date:date})
 
  submit =()=>{
-   console.log(this.state.date);
    Axios.post('https://hostelserver.herokuapp.com/timer/5edf6769c0264e6ed03657e9',{setTime :new Date(this.state.date) , sprint:this.state.sprint})
    .then((res)=>
    {
@@ -128,7 +127,6 @@ export default class Admin extends Component{
                 value={this.state.date}
                 className="datepicker"
                 />
-                {console.log(this.state.sprint)}
                 <select className="sprint"  onChange={this.onOptionChange} >
                 <option defaultValue="NA">Choose...</option>
                 <option value="Sprint 1">Sprint 1</option>

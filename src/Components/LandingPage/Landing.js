@@ -23,11 +23,11 @@ function Landing(){
             <div className="sub-heading">
                 5 simple steps:
             </div>
-            <div class="slider">
+            <div className="slider">
   
   
 
-  <div class="slides">
+  <div className="slides">
     <div id="slide-1">
       <div>
           Choose to be a member of a group or the leader.

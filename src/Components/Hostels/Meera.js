@@ -34,6 +34,24 @@ class Meera extends Component{
 	componentDidMount(){
 		axios.get('https://hostelserver.herokuapp.com/getWing')
 	 	.then(response => {
+			 this.setState({
+				f1w1:"free",
+				f1w2:"free",
+				f1w3:"free",
+				f1w4:"free",
+				f1w5:"free",
+				f1w6:"free",
+				f1w7:"free",
+				f1w8:"free",
+				f2w1:"free",
+				f2w2:"free",
+				f2w3:"free",
+				f2w4:"free",
+				f2w5:"free",
+				f2w6:"free",
+				f2w7:"free",
+				f2w8:"free"
+			 },()=>{
 	 		this.state.wings=response.data.filter(wing=>{
 	 			if(wing.bhawan===this.props.Bhawan)
 	 			{
@@ -112,7 +130,7 @@ class Meera extends Component{
 	 				}
 	 			}
 	 				
-	 		})
+	 		})})
 	 	})
 	 	.catch(function(err) {
 	 		console.log(err);
@@ -126,15 +144,10 @@ class Meera extends Component{
 		};
 
 	selectWing=(floor,wing,status)=>{
-		console.log(this.state.wings)
 		if(this.props.username==='admin')
 		{
 			if(status==="free")
 			{
-				console.log(this.props.Bhawan);
-				console.log(this.state.f1w1);
-				console.log(wing);
-				console.log(floor);
 				this.dialog.show({
 				body:'Are you sure you want to block the wing?',
 				actions:[
@@ -142,7 +155,6 @@ class Meera extends Component{
 				   Dialog.OKAction(() => {
   						axios.post('https://hostelserver.herokuapp.com/setBlocked',{ bhawan:this.props.Bhawan,floor:floor,wingNo:wing})
   						.then(res =>{
-  							console.log(res.data);
   							this.reload();
   						})
   					})
@@ -157,7 +169,6 @@ class Meera extends Component{
 				   Dialog.OKAction(() => {
   						axios.post('https://hostelserver.herokuapp.com/setFree',{ bhawan:this.props.Bhawan,floor:floor,wingNo:wing})
   						.then(res =>{
-  							console.log(res.data);
   							this.reload();
   						})
   					})
@@ -165,11 +176,10 @@ class Meera extends Component{
 				})
 			}	
 	  	}
-		else if(window.localStorage.getItem('role')==='leader' && window.localStorage.getItem('wing')==="undefined" && window.localStorage.getItem('sprint')=== "Sprint 2")
+		else if(window.localStorage.getItem('role')==='leader' && window.localStorage.getItem('wing')==="null" && window.localStorage.getItem('sprint')=== "Sprint 2")
 		{
 			axios.post('https://hostelserver.herokuapp.com/setSelected',{ bhawan:this.props.Bhawan,floor:floor,wingNo:wing})
 	  			.then(res =>{
-	  					console.log(res.data);
 	  					//this.reload();
 	  				})
 			if(status==="free")
@@ -180,7 +190,6 @@ class Meera extends Component{
 					   Dialog.CancelAction(() => {
   						axios.post('https://hostelserver.herokuapp.com/setFree',{ bhawan:this.props.Bhawan,floor:floor,wingNo:wing})
   						.then(res =>{
-  							console.log(res.data);
   							this.reload();
   							})
 						  }),
@@ -211,7 +220,7 @@ class Meera extends Component{
 		}
 		else{
 			this.dialog.show({
-				body:"You cannot Select a wing.",
+				body:"You cannot select a wing.",
 				actions:[
 				   Dialog.OKAction(()=>{
 				   })

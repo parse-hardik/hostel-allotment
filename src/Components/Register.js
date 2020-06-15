@@ -72,7 +72,6 @@ class Register extends Component{
     })
     .then((res)=>res.json())
       .then((res)=>{
-      	console.log(res);
       	if(res.error.code===11000){
       		alert('Username Already exists!!');
       		return;
