@@ -128,7 +128,7 @@ class Register extends Component{
 			      </div>
 			    </fieldset>
 			    <div className="flex justify-around">
-				<a href =""className="" onClick={() => history.push('/Sigin')}>
+				<a href =""className="" onClick={() => this.props.back}>
 			      <input onClick={this.joinUser} className="b ph3 pv2 white input-reset ba b--white-20 bg-transparent grow pointer f4 dib" type="submit" value="Register" />
 				  </a>
 			      <input onClick={this.props.Back}  className="b ph3 pv2 white input-reset ba b--white-20 bg-transparent grow pointer f4 dib" type="submit" value="Back" />
