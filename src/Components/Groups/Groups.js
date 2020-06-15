@@ -47,8 +47,8 @@ class Group extends Component{
 
 	render(){
 			const {grps,searchField}= this.state;
-			const filteredGroups = grps.filter(groups =>{
-			return groups.gname.toLowerCase().includes(searchField.toLowerCase());
+			const filteredGroups = grps.filter(group =>{
+			return group.gname.toLowerCase().includes(searchField.toLowerCase());
 			});
 			return(
 				<div className='tc'>

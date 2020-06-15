@@ -9,7 +9,6 @@ import Groups from '../Groups/Groups';
 import Users from '../Users/Users';
 import App from '../../App';
 import Admin from '../Admin.js';
-import SignIn from'../SignIn.js';
 var name=" ";
 
 class Dashboard extends React.Component{
