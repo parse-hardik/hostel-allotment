@@ -165,7 +165,7 @@ class Meera extends Component{
 				})
 			}	
 	  	}
-		else if(window.localStorage.getItem('role')==='leader' && window.localStorage.getItem('wing')=="null" && window.localStorage.getItem('sprint')=== "Sprint 2")
+		else if(window.localStorage.getItem('role')==='leader' && window.localStorage.getItem('wing')==="undefined" && window.localStorage.getItem('sprint')=== "Sprint 2")
 		{
 			axios.post('https://hostelserver.herokuapp.com/setSelected',{ bhawan:this.props.Bhawan,floor:floor,wingNo:wing})
 	  			.then(res =>{
