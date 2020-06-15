@@ -10,7 +10,7 @@ class Layout extends Component{
 					<center>
 						
 						{
-							window.localStorage.getItem('role')==='leader' && window.localStorage.getItem('wing')==="null" ?
+							window.localStorage.getItem('role')==='leader' && window.localStorage.getItem('wing')!=="null" ?
 							<h2>Your allotted wing is {window.localStorage.getItem('wing')}</h2>
 							:
 							<div></div>
