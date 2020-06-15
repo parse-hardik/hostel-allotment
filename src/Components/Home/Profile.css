@@ -9,7 +9,9 @@
   height: 100vh;
   margin: 0;
   padding: 0;
+
 }
+
 .imagesize{
   height: 25px;
   width: 25px;
@@ -121,7 +123,9 @@
     transition-delay: 0.2s;
     background-color: #FFF;
 }
-
+img:hover{
+  transform: rotateY(360deg);
+}
 
 .user-info {
   position: absolute;
@@ -132,7 +136,9 @@
     width: 100%;
     box-sizing: border-box;
     padding: 10px;
-  text-align: center
+  text-align: center;
+  font-size:20px;
+  color: grey;
 }
 
 .user-info > h2 {

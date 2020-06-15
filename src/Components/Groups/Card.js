@@ -12,16 +12,29 @@ class Card extends Component{
 	}
    
     alreadymem=()=>{
-     this.dialog.show({
-     	body: 'Hey! You are already in a group',
-     	actions:[
-     	    Dialog.OKAction()
-     	]
-     })
+		if(window.localStorage.getItem('sprint')==='Sprint 1')
+		{
+			this.dialog.show({
+				body: 'Hey! You are already in a group',
+				actions:[
+					Dialog.OKAction()
+				]
+			})
+		}
+		else{
+			this.dialog.show({
+				body: 'You cannot send a request in the current Sprint',
+				actions:[
+					Dialog.OKAction(),
+				]
+			})
+		}
 
     }
 
     sendreq=()=>{
+		if(window.localStorage.getItem('sprint')==='Sprint 1')
+		{
     	this.dialog.show({
     		body: 'Are you sure you want to send request to this group',
     		actions:[
@@ -31,7 +44,16 @@ class Card extends Component{
     		    	.then(alert('Your req has been sent!'))
     		    })
     		]
-    	})
+		})
+		}
+		else{
+			this.dialog.show({
+				body: 'You cannot send a request in the current Sprint',
+				actions:[
+					Dialog.OKAction(),
+				]
+			})
+		}
     }
     
 

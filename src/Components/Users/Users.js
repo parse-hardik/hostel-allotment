@@ -15,11 +15,11 @@ class Group extends Component{
 		}
 	}
 
-	 componentDidMount(){
-		
+	 componentDidMount()
+	 {		
 	 	fetch('http://localhost:5000/getUsers',{
-	 		method:'get',
-      headers: {'Content-Type':'application/json'}
+	 	method:'get',
+        headers: {'Content-Type':'application/json'}
 	 	})
 	 	.then((res)=>res.json())
 	 	.then(res => {
@@ -28,13 +28,12 @@ class Group extends Component{
 	 	.catch(function(err) {
 	 		console.log(err);
 	 	});
-
 	 	axios.post('http://localhost:5000/getOneUser',{username: this.props.username})
         .then(res=>{
         this.setState({superUser:res.data[0]})
          console.log(this.state.superUser)
-      })
-      .catch(err=>console.log);
+      	})
+        .catch(err=>console.log);
 	 }
 
 	onSearchChange = (event) =>{

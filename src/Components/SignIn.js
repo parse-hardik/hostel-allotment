@@ -62,6 +62,7 @@ class SignIn extends React.Component {
         if(res.name!==undefined){
           this.props.giveUsername(this.state.username);
           this.props.onSignIn();
+          res.name==='admin'? window.localStorage.setItem('isAdmin',true): window.localStorage.setItem('isAdmin',false);
         }
         else
           alert('Incorrect combination');
@@ -84,11 +85,11 @@ class SignIn extends React.Component {
       			      <legend className="f1 fw6 ph0 mh0">Sign In</legend>
       			      <div className="mt3">
       			        <label className="db fw6 lh-copy f3" for="username">Username</label>
-      			        <input onChange={this.onUsernameChange} className="pa2 b--white-20 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="username"  id="username" />
+      			        <input onChange={this.onUsernameChange} className="pa2 b--white-20 input-reset ba w-100 text" type="text" name="username"  id="username" />
       			      </div>
       			      <div className="mv3">
       			        <label className="db fw6 lh-copy f3" for="password">Password</label>
-      			        <input onChange={this.onPasswordChange} className="b pa2 b--white-20 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="password" name="password"  id="password" />
+      			        <input onChange={this.onPasswordChange} className="b pa2 b--white-20 input-reset ba w-100 text" type="password" name="password"  id="password" />
       			      </div>
       			    </fieldset>
       			    <div className="flex justify-around">
