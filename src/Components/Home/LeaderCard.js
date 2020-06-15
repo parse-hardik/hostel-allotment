@@ -16,7 +16,7 @@ class LeaderCard extends React.Component{
   changetoAccept=(event)=>{
     this.setState({status:"accept"})
 
-    fetch('http://localhost:5000/notifsReq',{
+    fetch('https://hostelserver.herokuapp.com/notifsReq',{
       method:'post',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({
@@ -40,7 +40,7 @@ class LeaderCard extends React.Component{
   changetoReject=(event)=>{
      // this.state.status='reject';
      this.setState({status:"reject"})
-    fetch('http://localhost:5000/notifsReq',{
+    fetch('https://hostelserver.herokuapp.com/notifsReq',{
       method:'post',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({

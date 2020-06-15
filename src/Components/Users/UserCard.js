@@ -14,7 +14,7 @@ class UserCard extends Component{
 	}
 	componentDidMount(){	
 			
-		fetch('http://localhost:5000/getUsers',{
+		fetch('https://hostelserver.herokuapp.com/getUsers',{
 		method:'get',
 		headers: {'Content-Type':'application/json'}
 		})
@@ -60,7 +60,7 @@ sendMemRequest=()=>{
 				actions:[
 				Dialog.CancelAction(),
 				Dialog.OKAction(() => {
-						axios.post('http://localhost:5000/createNotif',{fromGname:this.props.superUser.username ,toUsername:this.props.user.username})
+						axios.post('https://hostelserver.herokuapp.com/createNotif',{fromGname:this.props.superUser.username ,toUsername:this.props.user.username})
 						.then(res =>{
 							alert('Your req has been sent to ' + this.props.user.username + '!')
 							console.log(res.data);

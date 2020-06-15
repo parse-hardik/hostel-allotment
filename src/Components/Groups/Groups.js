@@ -17,7 +17,7 @@ class Group extends Component{
 	}
 
 	 componentDidMount(){
-		axios.get('http://localhost:5000/getGroup')
+		axios.get('https://hostelserver.herokuapp.com/getGroup')
 	 	.then(response => {
 	 		this.setState({grps : response.data});
 	 		//console.log(response.data);
@@ -25,7 +25,7 @@ class Group extends Component{
 	 	.catch(function(err) {
 	 		console.log(err);
 	 	});
-	 	axios.get('http://localhost:5000/getUsers')
+	 	axios.get('https://hostelserver.herokuapp.com/getUsers')
 	 	.then(response => {
 	 		this.setState({users : response.data});
 	 		//console.log(response.data)
@@ -33,7 +33,7 @@ class Group extends Component{
 	 	.catch(function(err) {
 	 		console.log(err);
 	 	});
-	 	axios.post('http://localhost:5000/getOneUser',{username: this.props.username})
+	 	axios.post('https://hostelserver.herokuapp.com/getOneUser',{username: this.props.username})
 	 	.then(res=>{
         this.setState({username:res.data[0]})
          console.log(this.state.username)

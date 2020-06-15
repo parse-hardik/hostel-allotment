@@ -21,7 +21,7 @@ class Roles extends React.Component{
 
 	setLeader = (event) => {
 		console.log('username is', username);
-		fetch('http://localhost:5000/setLeader', {
+		fetch('https://hostelserver.herokuapp.com/setLeader', {
 			method: 'post',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
@@ -38,7 +38,7 @@ class Roles extends React.Component{
 
 	setMember = (event) => {
 		console.log('username is', username);
-		fetch('http://localhost:5000/setMember', {
+		fetch('https://hostelserver.herokuapp.com/setMember', {
 			method: 'post',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
@@ -70,7 +70,7 @@ class Roles extends React.Component{
 		this.setState({username:this.props.username});
 		username=this.props.username;
 			
-		fetch('http://localhost:5000/getGroup',{
+		fetch('https://hostelserver.herokuapp.com/getGroup',{
 		method:'get',
 		headers: {'Content-Type':'application/json'}
 		})

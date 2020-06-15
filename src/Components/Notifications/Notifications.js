@@ -14,7 +14,7 @@ class Notifications extends Component{
 
 	async componentDidMount(){
 
-    await fetch('http://localhost:5000/getRole',{
+    await fetch('https://hostelserver.herokuapp.com/getRole',{
       method:'post',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({
@@ -35,7 +35,7 @@ class Notifications extends Component{
 
   if(this.state.role==='member')
   {
-		await fetch('http://localhost:5000/getNotifsformember',{
+		await fetch('https://hostelserver.herokuapp.com/getNotifsformember',{
       method:'post',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({
@@ -51,7 +51,7 @@ class Notifications extends Component{
 
   if(this.state.role==='leader')
   {
-    await fetch('http://localhost:5000/getNotifsforLeader',{
+    await fetch('https://hostelserver.herokuapp.com/getNotifsforLeader',{
     method:'post',
     headers: {'Content-Type':'application/json'},
     body: JSON.stringify({

@@ -17,7 +17,7 @@ class Group extends Component{
 
 	 componentDidMount()
 	 {		
-	 	fetch('http://localhost:5000/getUsers',{
+	 	fetch('https://hostelserver.herokuapp.com/getUsers',{
 	 	method:'get',
         headers: {'Content-Type':'application/json'}
 	 	})
@@ -28,7 +28,7 @@ class Group extends Component{
 	 	.catch(function(err) {
 	 		console.log(err);
 	 	});
-	 	axios.post('http://localhost:5000/getOneUser',{username: this.props.username})
+	 	axios.post('https://hostelserver.herokuapp.com/getOneUser',{username: this.props.username})
         .then(res=>{
         this.setState({superUser:res.data[0]})
          console.log(this.state.superUser)

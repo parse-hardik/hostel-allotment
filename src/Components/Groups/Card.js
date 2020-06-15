@@ -40,7 +40,7 @@ class Card extends Component{
     		actions:[
     		    Dialog.CancelAction(),
     		    Dialog.OKAction(()=>{
-    		    	axios.post('http://localhost:5000/createNotif',{fromUsername:this.props.user,toGname:this.props.name})
+    		    	axios.post('https://hostelserver.herokuapp.com/createNotif',{fromUsername:this.props.user,toGname:this.props.name})
     		    	.then(alert('Your req has been sent!'))
     		    })
     		]

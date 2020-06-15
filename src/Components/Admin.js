@@ -58,7 +58,7 @@ export default class Admin extends Component{
 
  submit =()=>{
    console.log(this.state.date);
-   Axios.post('http://localhost:5000/timer/5edf6769c0264e6ed03657e9',{setTime :new Date(this.state.date) , sprint:this.state.sprint})
+   Axios.post('https://hostelserver.herokuapp.com/timer/5edf6769c0264e6ed03657e9',{setTime :new Date(this.state.date) , sprint:this.state.sprint})
    .then((res)=>
    {
     this.dialog.show({
@@ -75,7 +75,7 @@ export default class Admin extends Component{
  }
 
  componentDidMount(){
-     Axios.get('http://localhost:5000/getUsers')
+     Axios.get('https://hostelserver.herokuapp.com/getUsers')
      .then((res)=>{
          var count =0,leader=0,member=0,neither=0;
          res.data.map((obj,index)=>{
@@ -96,7 +96,7 @@ export default class Admin extends Component{
          bardata[3][1]=neither;
      })
 
-     Axios.get('http://localhost:5000/getWing')
+     Axios.get('https://hostelserver.herokuapp.com/getWing')
      .then((res)=>{
          var free =0,blocked=0,selected=0;
          res.data.map((obj,index)=>{

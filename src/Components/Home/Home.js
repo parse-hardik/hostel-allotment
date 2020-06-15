@@ -16,7 +16,7 @@ class Home extends Component{
 
 	async componentDidMount(){
 		// console.log('username in home is',this.props.username);
-		await fetch('http://localhost:5000/getRole',{
+		await fetch('https://hostelserver.herokuapp.com/getRole',{
       method:'post',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({

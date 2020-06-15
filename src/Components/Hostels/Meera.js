@@ -32,7 +32,7 @@ class Meera extends Component{
 	}
 
 	componentDidMount(){
-		axios.get('http://localhost:5000/getWing')
+		axios.get('https://hostelserver.herokuapp.com/getWing')
 	 	.then(response => {
 	 		this.state.wings=response.data.filter(wing=>{
 	 			if(wing.bhawan===this.props.Bhawan)
@@ -140,7 +140,7 @@ class Meera extends Component{
 				actions:[
 				   Dialog.CancelAction(),
 				   Dialog.OKAction(() => {
-  						axios.post('http://localhost:5000/setBlocked',{ bhawan:this.props.Bhawan,floor:floor,wingNo:wing})
+  						axios.post('https://hostelserver.herokuapp.com/setBlocked',{ bhawan:this.props.Bhawan,floor:floor,wingNo:wing})
   						.then(res =>{
   							console.log(res.data);
   							this.reload();
@@ -155,7 +155,7 @@ class Meera extends Component{
 				actions:[
 				   Dialog.CancelAction(),
 				   Dialog.OKAction(() => {
-  						axios.post('http://localhost:5000/setFree',{ bhawan:this.props.Bhawan,floor:floor,wingNo:wing})
+  						axios.post('https://hostelserver.herokuapp.com/setFree',{ bhawan:this.props.Bhawan,floor:floor,wingNo:wing})
   						.then(res =>{
   							console.log(res.data);
   							this.reload();
@@ -167,7 +167,7 @@ class Meera extends Component{
 	  	}
 		else if(window.localStorage.getItem('role')==='leader' && window.localStorage.getItem('wing')=="null" && window.localStorage.getItem('sprint')=== "Sprint 2")
 		{
-			axios.post('http://localhost:5000/setSelected',{ bhawan:this.props.Bhawan,floor:floor,wingNo:wing})
+			axios.post('https://hostelserver.herokuapp.com/setSelected',{ bhawan:this.props.Bhawan,floor:floor,wingNo:wing})
 	  			.then(res =>{
 	  					console.log(res.data);
 	  					//this.reload();
@@ -178,7 +178,7 @@ class Meera extends Component{
 					body:'Are you sure you want to select the wing?',
 					actions:[
 					   Dialog.CancelAction(() => {
-  						axios.post('http://localhost:5000/setFree',{ bhawan:this.props.Bhawan,floor:floor,wingNo:wing})
+  						axios.post('https://hostelserver.herokuapp.com/setFree',{ bhawan:this.props.Bhawan,floor:floor,wingNo:wing})
   						.then(res =>{
   							console.log(res.data);
   							this.reload();
@@ -186,7 +186,7 @@ class Meera extends Component{
 						  }),
 						
 					   Dialog.OKAction(()=>{
-						axios.post('http://localhost:5000/selectWing',{wing : this.props.Bhawan+"-"+floor+"-"+wing ,user:window.localStorage.username})
+						axios.post('https://hostelserver.herokuapp.com/selectWing',{wing : this.props.Bhawan+"-"+floor+"-"+wing ,user:window.localStorage.username})
 						.then(res =>{
 							window.localStorage.setItem('wing',this.props.Bhawan+"-"+floor+"-"+wing);
 							this.reload();

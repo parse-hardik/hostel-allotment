@@ -15,7 +15,7 @@ export default class Timer extends Component {
 
 
 	componentDidMount() {
-		axios.get('http://localhost:5000/timer/5edf6769c0264e6ed03657e9')
+		axios.get('https://hostelserver.herokuapp.com/timer/5edf6769c0264e6ed03657e9')
 			.then(res => {
 				window.localStorage.setItem('sprint',res.data.for)
 				//console.log(res.data);
