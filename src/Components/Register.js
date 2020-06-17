@@ -78,7 +78,6 @@ class Register extends Component{
       	}
         if(res.name!==undefined){
           alert('New user created!');
-          this.props.Back();
         }
         else
           alert('Incorrect combination');
