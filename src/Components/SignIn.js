@@ -48,7 +48,7 @@ class SignIn extends React.Component {
 	}
 
 	checkUser=(event)=>{
-    fetch('https://hostelserver.herokuapp.com/signIn',{
+    fetch('https://localhost:5000/signIn',{
       method:'post',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({

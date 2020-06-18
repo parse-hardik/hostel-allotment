@@ -3,9 +3,6 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import SignIn from './Components/SignIn';
 import Register from './Components/Register';
 import './App.css';
-
-
-
 class App extends Component{
   constructor()
   {
@@ -20,23 +17,18 @@ class App extends Component{
   componentDidMount(){
     
   }
-
   onRegister=(event)=>{
     this.setState({route:'register'});
   }
-
   Back=(event)=>{
     this.setState({route: 'signin'});
   }
-
   onSignIn=(event)=>{
     this.setState({route:'registered'});
   }
-
   giveUsername=(user)=>{
     this.setState({username:user});
   }
-
   render(){
       return (
           <div>
@@ -46,12 +38,12 @@ class App extends Component{
               this.state.route==='registered'? <Dashboard username={this.state.username} />
             :
               <SignIn onRegister={this.onRegister} onSignIn={this.onSignIn} giveUsername={this.giveUsername}/>
+              
           }
-          
+
           </div>
           
       );
   }
 }
-
 export default App;

@@ -26,9 +26,7 @@ const particlesOptions={
     detect_on: 'canvas'
   },
 }
-
 class Register extends Component{
-
 	constructor(){
 		super()
 		this.state={
@@ -39,7 +37,6 @@ class Register extends Component{
 			reenter:'',
 		}
 	}
-
 	onNameChange=(event)=>{
 		this.setState({name:event.target.value});
 	}
@@ -58,7 +55,7 @@ class Register extends Component{
 	joinUser=(event)=>{
 		if(this.state.password===this.state.reenter && this.state.email.match(/.+@.+/))
 		{
-			fetch('https://hostelserver.herokuapp.com/register',{
+			fetch('https://localhost:5000/register',{
       method:'post',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({
@@ -129,6 +126,7 @@ class Register extends Component{
 			    </fieldset>
 			    <div className="flex justify-around">
 				<a href =""className="" onClick={() => history.push('/Sigin')}>
+				
 			      <input onClick={this.joinUser} className="b ph3 pv2 white input-reset ba b--white-20 bg-transparent grow pointer f4 dib" type="submit" value="Register" />
 				  </a>
 			      <input onClick={this.props.Back}  className="b ph3 pv2 white input-reset ba b--white-20 bg-transparent grow pointer f4 dib" type="submit" value="Back" />
