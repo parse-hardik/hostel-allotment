@@ -4,7 +4,7 @@ import './Admin.css';
 import { Chart } from "react-google-charts";
 import DateTimePicker from 'react-datetime-picker';
 import Dialog from 'react-bootstrap-dialog';
-
+import HostelStat from './HostelStat.js';
 const baroptions = {
     title: 'Categories selected by students',
     chartArea: { width: '50%' },
@@ -22,18 +22,18 @@ const baroptions = {
     ['Member', 0],
     ['None',0],
 ];
-const threedata=
-    [
-        ['Status', 'Number Of Wings'],
-        ['Selected', 0],
-        ['Free', 0],
-        ['Blocked', 0],
-    ];
+// const threedata=
+//     [
+//         ['Status', 'Number Of Wings'],
+//         ['Selected', 0],
+//         ['Free', 0],
+//         ['Blocked', 0],
+//     ];
 
-const threeoptions={    
-        title: 'Wing distinctions for meera bhawan',
-        is3D: true,
-    };
+// const threeoptions={    
+//         title: 'Wing distinctions for meera bhawan',
+//         is3D: true,
+//     };
 
   const pieoptions = {
     title: 'Student Seggregation',
@@ -51,6 +51,10 @@ export default class Admin extends Component{
      this.state ={
       date: new Date(),
       sprint:"",
+      hostel:"",
+      selected:0,
+      free:0,
+      blocked:0
      }
  }
 
@@ -72,6 +76,31 @@ export default class Admin extends Component{
  onOptionChange=(e)=>{
     this.setState({sprint : e.target.value});
  }
+ onHostelChange=(e)=>{
+  this.setState({hostel : e.target.value});
+  Axios.get('https://hostelserver.herokuapp.com/getWing')
+     .then((res)=>{
+         var free =0,blocked=0,selected=0;
+         res.data.map((obj,index)=>{
+           console.log(obj);
+            if(obj.bhawan===this.state.hostel)
+            {
+                if(obj.status==='selected')
+                    selected++;
+                else if(obj.status==='free')
+                    free++;
+                else
+                    blocked++;
+            }
+         })
+         console.log(free,selected,blocked);
+         this.setState({selected : selected, free:free, blocked:blocked});
+        //  threedata[1][1]=selected;
+        //  threedata[2][1]=free;
+        //  threedata[3][1]=blocked;
+     })
+  
+}
 
  componentDidMount(){
      Axios.get('https://hostelserver.herokuapp.com/getUsers')
@@ -95,24 +124,24 @@ export default class Admin extends Component{
          bardata[3][1]=neither;
      })
 
-     Axios.get('https://hostelserver.herokuapp.com/getWing')
-     .then((res)=>{
-         var free =0,blocked=0,selected=0;
-         res.data.map((obj,index)=>{
-            if(obj.bhawan==='meera')
-            {
-                if(obj.status==='selected')
-                    selected++;
-                else if(obj.status==='free')
-                    free++;
-                else
-                    blocked++;
-            }
-         })
-         threedata[1][1]=selected;
-         threedata[2][1]=free;
-         threedata[3][1]=blocked;
-     })
+    //  Axios.get('https://hostelserver.herokuapp.com/getWing')
+    //  .then((res)=>{
+    //      var free =0,blocked=0,selected=0;
+    //      res.data.map((obj,index)=>{
+    //         if(obj.bhawan==='meera')
+    //         {
+    //             if(obj.status==='selected')
+    //                 selected++;
+    //             else if(obj.status==='free')
+    //                 free++;
+    //             else
+    //                 blocked++;
+    //         }
+    //      })
+    //      threedata[1][1]=selected;
+    //      threedata[2][1]=free;
+    //      threedata[3][1]=blocked;
+    //  })
  }
  render(){
      return(
@@ -160,16 +189,34 @@ export default class Admin extends Component{
                     data={bardata}
                     options={baroptions}
                     />
-            
-                <Chart
+          <center>
+          <h4 className="date-time mt-5 mb-2"> Select the bhavan</h4>
+                <select className="sprint" onChange={this.onHostelChange}>
+                <option defaultValue="NA">Choose...</option>
+                <option value="meera">Meera Bhawan</option>
+                <option value="vyas">Vyas Bhawan</option>
+                <option value="krishna">Krishna Bhawan</option>
+                <option value="malviya">Malaviya Bhawan</option>
+                <option value="gautam">Gautam Bhawan</option>
+                <option value="shankar">Shankar Bhawan</option>
+                <option value="vk">VishwaKarma Bhawan</option>
+                <option value="gandhi">Gandhi Bhawan</option>
+                <option value="valmiki">Valmiki Bhawan</option>
+                </select>
+                <HostelStat hostel={this.state.hostel} selected={this.state.selected} free={this.state.free} blocked={this.state.blocked} />
+          </center>     
+                {/* <Chart
                     width={'700px'}
                     height={'400px'}
                     chartType="PieChart"
                     loader={<div>Loading Chart</div>}
                     data={threedata}
-                    options={threeoptions}
+                    options={{    
+                      title: `Wing distinctions  for ${this.state.hostel}  bhawan`,
+                      is3D: true,
+                  }}
                     rootProps={{ 'data-testid': '2' }}
-                    />
+                    /> */}
              
             </div>
             <Dialog ref={(component) => { this.dialog = component }} />

@@ -26,9 +26,7 @@ const particlesOptions={
     detect_on: 'canvas'
   },
 }
-
 class Register extends Component{
-
 	constructor(){
 		super()
 		this.state={
@@ -39,7 +37,6 @@ class Register extends Component{
 			reenter:'',
 		}
 	}
-
 	onNameChange=(event)=>{
 		this.setState({name:event.target.value});
 	}
