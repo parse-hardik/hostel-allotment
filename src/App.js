@@ -37,8 +37,12 @@ class App extends Component{
             :
               this.state.route==='registered'? <Dashboard username={this.state.username} />
             :
+<<<<<<< HEAD
               <SignIn onRegister={this.onRegister} onSignIn={this.onSignIn} giveUsername={this.giveUsername}/>
               
+=======
+              <SignIn onRegister={this.onRegister} onSignIn={this.onSignIn} giveUsername={this.giveUsername} back={this.Back}/>
+>>>>>>> 1f88e33b002117b6bfe44c2aa5c1f49f4a6d409d
           }
 
           </div>
