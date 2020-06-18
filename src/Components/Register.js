@@ -55,7 +55,7 @@ class Register extends Component{
 	joinUser=(event)=>{
 		if(this.state.password===this.state.reenter && this.state.email.match(/.+@.+/))
 		{
-			fetch('https://localhost:5000/register',{
+			fetch('https://hostelserver.herokuapp.com/register',{
       method:'post',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({
