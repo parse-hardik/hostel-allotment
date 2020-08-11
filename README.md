@@ -1,3 +1,11 @@
+## Contributors:
+Hardik Parnami      :  parse-hardik 
+Sristi Sharma       :  judyhopps24
+Kriti Jethlia       :  KritiJethlia
+Aditya Alok Jhaveri :  swooshie
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
