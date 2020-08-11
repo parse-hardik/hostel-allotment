@@ -1,8 +1,8 @@
 ### Contributors:
-#### Hardik Parnami      :  parse-hardik <br />
-#### Sristi Sharma       :  judyhopps24  <br />
-#### Kriti Jethlia       :  KritiJethlia<br />
-#### Aditya Alok Jhaveri :  swooshie<br />
+#### Hardik Parnami      : https://github.com/parse-hardik <br />
+#### Sristi Sharma       : https://github.com/judyhopps24  <br />
+#### Kriti Jethlia       :  https://github.com/KritiJethlia<br />
+#### Aditya Alok Jhaveri :  https://github.com/swooshie<br />
 
 
 
